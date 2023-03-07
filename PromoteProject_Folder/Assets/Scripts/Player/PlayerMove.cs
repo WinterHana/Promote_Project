@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * rigidbody 설정 
+ * 1. 공기저항(Linear Drag) : 1
+ * 2. 중력 비중(Gravity Scale) : 2
+ * 3. MaxSpeed = 3
+ * 4. JumpPower = 7
+ */
 public class PlayerMove : MonoBehaviour
 {
     public float maxSpeed;
@@ -37,19 +44,7 @@ public class PlayerMove : MonoBehaviour
     void FixedUpdate()
     {
         move();
-
-        // 레이케스트 그리기
-        Debug.DrawRay(rigid.position, Vector2.down, new Color(1, 0, 0));
-
-        RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 1, LayerMask.GetMask("tiles"));
-
-        if (rayHit.collider != null)
-        {
-            if (rayHit.distance < 1.0f)
-            {
-                Debug.Log(rayHit.collider.name);
-            }
-        }
+        raycast();
     }
 
     // 좌우로 움직임
@@ -72,7 +67,27 @@ public class PlayerMove : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
+            // 점프를 할 때 속도를 초기화해서 좀 더 게임적으로
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+        }
+    }
+
+    void raycast() 
+    {
+        if (rigid.velocity.y < 0)
+        {
+            // 레이케스트 그리기
+            Debug.DrawRay(rigid.position, Vector2.down, new Color(1, 0, 0));
+
+            RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 1, LayerMask.GetMask("tiles"));
+
+            if (rayHit.collider != null)
+            {
+                if (rayHit.distance < 1.0f)
+                {
+                    Debug.Log(rayHit.collider.name);
+                }
+            }
         }
     }
 }
