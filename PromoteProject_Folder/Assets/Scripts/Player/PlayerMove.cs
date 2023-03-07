@@ -25,10 +25,6 @@ public class PlayerMove : MonoBehaviour
         // 오브젝트가 구르는 현상 방지
         rigid.freezeRotation = true;
     }
-    void Start()
-    {
-        
-    }
     
     void Update()
     {
@@ -39,7 +35,6 @@ public class PlayerMove : MonoBehaviour
             rigid.velocity = new Vector2(rigid.velocity.normalized.x * 0.5f, rigid.velocity.y);
         }
     }
-
 
     void FixedUpdate()
     {
