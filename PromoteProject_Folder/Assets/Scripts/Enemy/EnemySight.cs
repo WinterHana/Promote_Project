@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class EnemySight : MonoBehaviour
 {
-    [SerializeField] private bool m_bDebugMode = false;
+    // [SerializeField] private bool m_bDebugMode = false;
 
     [Header("View Config")]         // 제목
     [Range(0f, 360f)]               // Range 어트리뷰트로 제한
-    [SerializeField] private float m_horizontalViewAngle    = 0f;       // 시야각
-    [SerializeField] private float m_viewRadius             = 1f;
+    [SerializeField] private float m_horizontalViewAngle = 55f;       // 시야각
+    [SerializeField] private float m_viewRadius = 3f;       // 시야의 크기
     [Range(-100f, 100f)]
     [SerializeField] protected float m_viewRotateZ = 0f;       // 시야각을 회전시키는데 이용 : 캐릭터의 방향과 시야의 방향이 달라야할 경우 사용
 
@@ -17,7 +17,7 @@ public class EnemySight : MonoBehaviour
     [SerializeField] private LayerMask m_viewTargetMask;
     [SerializeField] private LayerMask m_viewObstacleMask;
 
-    private List<Collider2D> hitedTargetContainer = new List<Collider2D> ();
+    private List<Collider2D> hitedTargetContainer = new List<Collider2D>();
 
     private float m_horizontalViewHalfAngle = 0f;                      // 시야각의 반
 
@@ -38,27 +38,24 @@ public class EnemySight : MonoBehaviour
     private Vector3 AngleToDirZ(float angleInDegree)
     {
         float radian = (angleInDegree - transform.eulerAngles.z) * Mathf.Deg2Rad;       // 입력한 Angle을 Local Direction으로 변환 시키기 위한 계산
-        return new Vector3(Mathf.Sin(radian), Mathf.Cos(radian), 0f);    
+        return new Vector3(Mathf.Sin(radian), Mathf.Cos(radian), 0f);
     }
 
     private void OnDrawGizmos()
     {
-        if (m_bDebugMode)
-        {
-            m_horizontalViewHalfAngle = m_horizontalViewAngle * 0.5f;
+        m_horizontalViewHalfAngle = m_horizontalViewAngle * 0.5f;
 
-            Vector3 originPos = transform.position;
+        Vector3 originPos = transform.position;
 
-            Gizmos.DrawWireSphere(originPos, m_viewRadius);         // 인식할 수 있는 범위 그리기
+        Gizmos.DrawWireSphere(originPos, m_viewRadius);         // 인식할 수 있는 범위 그리기
 
-            Vector3 horizontalRightDir = AngleToDirZ(-m_horizontalViewHalfAngle + m_viewRotateZ);       // 시야값을 방향값으로 변환
-            Vector3 horizontalLeftDir = AngleToDirZ(m_horizontalViewHalfAngle + m_viewRotateZ);         // m_viewRotateZ에 따라 시야각을 더 회전시킬 수 있다.
-            Vector3 lookDir = AngleToDirZ(m_viewRotateZ);
+        Vector3 horizontalRightDir = AngleToDirZ(-m_horizontalViewHalfAngle + m_viewRotateZ);       // 시야값을 방향값으로 변환
+        Vector3 horizontalLeftDir = AngleToDirZ(m_horizontalViewHalfAngle + m_viewRotateZ);         // m_viewRotateZ에 따라 시야각을 더 회전시킬 수 있다.
+        Vector3 lookDir = AngleToDirZ(m_viewRotateZ);
 
-            Debug.DrawRay(originPos, horizontalLeftDir * m_viewRadius, Color.red);
-            Debug.DrawRay(originPos, lookDir * m_viewRadius, Color.green);
-            Debug.DrawRay(originPos, horizontalRightDir * m_viewRadius, Color.red);
-        }
+        Debug.DrawRay(originPos, horizontalLeftDir * m_viewRadius, Color.red);
+        // Debug.DrawRay(originPos, lookDir * m_viewRadius, Color.green);
+        Debug.DrawRay(originPos, horizontalRightDir * m_viewRadius, Color.red);
     }
 
     public Collider2D[] FindViewTargets()
@@ -66,7 +63,7 @@ public class EnemySight : MonoBehaviour
         hitedTargetContainer.Clear();
 
         Vector2 originPos = transform.position;
-        Collider2D[] hitedTargets   = Physics2D.OverlapCircleAll(originPos, m_viewRadius, m_viewTargetMask);
+        Collider2D[] hitedTargets = Physics2D.OverlapCircleAll(originPos, m_viewRadius, m_viewTargetMask);
 
         foreach (Collider2D hitedTarget in hitedTargets)
         {
@@ -79,24 +76,24 @@ public class EnemySight : MonoBehaviour
 
             if (angle <= m_horizontalViewHalfAngle)
             {
-                RaycastHit2D rayHitedTarget = Physics2D.Raycast(originPos, dir, m_viewRadius, m_viewObstacleMask);
+                RaycastHit2D rayHitedTarget = Physics2D.Raycast(originPos, dir, m_viewRadius, m_viewObstacleMask); // m_viewObstacleMask
                 if (rayHitedTarget)
                 {
-                    if (m_bDebugMode)
-                        Debug.DrawLine(originPos, rayHitedTarget.point, Color.yellow);
+                    Debug.DrawLine(originPos, rayHitedTarget.point, Color.yellow);
                 }
                 else
                 {
                     hitedTargetContainer.Add(hitedTarget);
-
-                    if(m_bDebugMode)
-                        Debug.DrawLine(originPos, targetPos, Color.red);
+                    Debug.DrawLine(originPos, targetPos, Color.red);
                 }
             }
         }
 
         if (hitedTargetContainer.Count > 0)
+        {
+            Debug.Log(hitedTargetContainer.ToArray());
             return hitedTargetContainer.ToArray();
+        }
         else
             return null;
     }
