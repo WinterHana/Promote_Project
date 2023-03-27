@@ -2,12 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInfo : MonoBehaviour
+public class PlayerInfo : Character
 {
-    [SerializeField] int health = 10;
-
-    public void setHealth(int num)
+    [SerializeField] int startHP;
+    public static PlayerInfo player;
+    private void Awake()
     {
-        health = num;
+        DontDestroyOnLoad(this);
+
+        if (player == null)
+        {
+            player = this;
+        }
+        else if (player != this)
+        {
+            Destroy(gameObject);
+        }
+        HP = player.startHP;
     }
 }
