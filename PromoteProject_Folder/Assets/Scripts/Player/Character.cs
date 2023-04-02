@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public abstract class Character : MonoBehaviour
 {
-    public int HP;
-    public int maxHP;
+    private Animator animator;
+    protected virtual void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
 }

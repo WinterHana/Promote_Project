@@ -31,9 +31,9 @@ public class PlayerMove : MonoBehaviour
     GameObject ground;
     
     bool isJump;            // 점프 상태인지 확인
-    bool isSit;           // 앉은 상태인지 확인
-    bool isLadder;
-
+    bool isSit;             // 앉은 상태인지 확인
+    bool isLadder;          // 사다리 상태인지 확인
+    bool findLadder;        // 레이케스트가 사다리를 찾았음
     float inputHorizontal;
     float inputVertical;
 
@@ -46,9 +46,12 @@ public class PlayerMove : MonoBehaviour
         ground = transform.GetChild(0).gameObject;
         // 오브젝트가 구르는 현상 방지
         rigid.freezeRotation = true;
+
+        // 각종 모션들의 상태
         isJump = false;
         isSit = false;
         isLadder = false;
+        findLadder = false;
 
         // 콜라이더가 2개인데, 서 있을 때는 캡슐, 앉을 때는 박스로 한다.
         standCol.enabled = true;
@@ -112,7 +115,7 @@ public class PlayerMove : MonoBehaviour
     void sit()
     {
         // 앉은 상태
-        if (!isLadder && Input.GetButtonDown("Sit"))
+        if (!findLadder && Input.GetButtonDown("Sit"))
         {
             // 애니매이션 조절
             ani.SetBool("sitting", true);
@@ -126,7 +129,7 @@ public class PlayerMove : MonoBehaviour
         }
 
         // 다시 일어섬
-        if (!isLadder && Input.GetButtonUp("Sit"))
+        if (!findLadder && Input.GetButtonUp("Sit"))
         {
             ani.SetBool("sitting", false);
             standCol.enabled = true;
@@ -145,6 +148,7 @@ public class PlayerMove : MonoBehaviour
         Debug.DrawRay(ground.transform.position, Vector2.up * rcDistance, new Color(0, 1, 0));
         if (hitInfo.collider != null)
         {
+            findLadder = true;
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 isLadder = true;
@@ -153,6 +157,7 @@ public class PlayerMove : MonoBehaviour
         else
         {
             isLadder = false;
+            findLadder = false;
         }
 
         if (isLadder == true)
