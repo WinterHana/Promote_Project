@@ -1,0 +1,1553 @@
+fileFormatVersion: 2
+guid: 1e29dc1887f02a5478b197771bdac0a2
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_0
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 1440
+        width: 90
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3a90cfa7e1865344a78383bac3de1fc
+      internalID: 282769823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_1
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 1120
+        width: 310
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57d9db7de0188c243924ee5f4a594b90
+      internalID: -1205559228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_2
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 1440
+        width: 90
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b32b25a1a4e85374e832c1968186241b
+      internalID: -765933013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_3
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 1120
+        width: 310
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97312d5ac8fc53641a2e3fffff881405
+      internalID: -354022821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_4
+      rect:
+        serializedVersion: 2
+        x: 970
+        y: 1350
+        width: 150
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38768f3be9bc6694f82464a687b0f26c
+      internalID: 2053451290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_5
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 1500
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b0450620f9db824fba4de1017bceae7
+      internalID: 6359109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_6
+      rect:
+        serializedVersion: 2
+        x: 1240
+        y: 1510
+        width: 40
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 000f6f06ca1157f4d9377e53d70ff3a1
+      internalID: -1701947568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_7
+      rect:
+        serializedVersion: 2
+        x: 1290
+        y: 1510
+        width: 40
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 299fdc11bc5af7249a75df913f3309b4
+      internalID: -29283897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_8
+      rect:
+        serializedVersion: 2
+        x: 1340
+        y: 1510
+        width: 40
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3dce1f9ead6b8441b2277ef25cbb007
+      internalID: 83692794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_9
+      rect:
+        serializedVersion: 2
+        x: 1390
+        y: 1510
+        width: 40
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ef69044f70d95c47a8eb3998ef3784b
+      internalID: 838422149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_10
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 1510
+        width: 40
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2e2db468f29303438ecff77e2a4eb07
+      internalID: 1366017023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_11
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 1500
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 076910c16592d9a439da4f0a99791d3a
+      internalID: -694902272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_12
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 1440
+        width: 20
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd940c112eeda71428c863b31d9a2458
+      internalID: -1344654168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_13
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 1440
+        width: 20
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 927e8022fbc024e4d9c7f0ca199564b0
+      internalID: -992782686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_14
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 1120
+        width: 100
+        height: 310
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7fba3e2b3669f2489b1fbfeba965c81
+      internalID: 1708981457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_15
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 1120
+        width: 100
+        height: 310
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fb051b067d476a4d98c98dea608ab47
+      internalID: -1262169119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_16
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 1390
+        width: 20
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5528bf0dbff431a4981081072cbbb560
+      internalID: -1979592467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_17
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 1390
+        width: 20
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b63d0d1d0f5591948ab8de4d9db8da42
+      internalID: -1259406298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_18
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 1340
+        width: 20
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ce5adddc04b31a469744e6dd6661e9f
+      internalID: 564445999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_19
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 1340
+        width: 20
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1473fd62de54aa24087b446310e9bbda
+      internalID: -1989141599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_20
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 1290
+        width: 20
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bda9923db4fe4464492194237bde7eff
+      internalID: -528098905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_21
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 1290
+        width: 20
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a4747eba022819469fb2f75401cdb40
+      internalID: 1611435511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_22
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 1240
+        width: 20
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46ff68ce45cd8e740bc9886d56e96cce
+      internalID: 1880936277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_23
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 1240
+        width: 20
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd94c1c025da71c4496c832d070e0416
+      internalID: 817158569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_24
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 1030
+        width: 160
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15841dd83c91c034dbdd6dd8c51fd456
+      internalID: -6156317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_25
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 1190
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 872cb0c4399f8554996b17d91bd3537f
+      internalID: -791364177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_26
+      rect:
+        serializedVersion: 2
+        x: 1240
+        y: 1190
+        width: 40
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9735913a13d62854baa27f85fab92146
+      internalID: 1198418252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_27
+      rect:
+        serializedVersion: 2
+        x: 1290
+        y: 1190
+        width: 40
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33bf375148f9cfd4f9899830f497156b
+      internalID: 428400647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_28
+      rect:
+        serializedVersion: 2
+        x: 1340
+        y: 1190
+        width: 40
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16e6d8e9cf5ee1f43a5980139e321f37
+      internalID: -54796145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_29
+      rect:
+        serializedVersion: 2
+        x: 1390
+        y: 1190
+        width: 40
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd9c4dcd6e836914d9579ff49a1ca200
+      internalID: -232434054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_30
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 1190
+        width: 40
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 513bbe0de64580c4ead31c30b47ec886
+      internalID: 1072882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_31
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 1190
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3984bf08defe15643923b8f71eb62bd3
+      internalID: -131429716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_32
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 960
+        width: 90
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fdc3a6609bf4654ca980a8bd448e692
+      internalID: -322405653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_33
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 640
+        width: 310
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ca55de51ecf1f748a1acd6d76a577b7
+      internalID: -1812919540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_34
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 960
+        width: 90
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27ddf08571600a942b44a2903a0fb171
+      internalID: -535536980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_35
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 640
+        width: 310
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0a8116180f5ea145bc2815b4d0435ae
+      internalID: -146221149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_36
+      rect:
+        serializedVersion: 2
+        x: 1140
+        y: 640
+        width: 100
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6ca627108b62c547b314bb3f049f8a0
+      internalID: 143387162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_37
+      rect:
+        serializedVersion: 2
+        x: 1340
+        y: 1020
+        width: 200
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e9c4438c400c44409c84b98bc0538ef
+      internalID: 1994591007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_38
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 640
+        width: 100
+        height: 310
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84e8bc5130369894cbb1759a3b2e2618
+      internalID: 1889180996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_39
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 640
+        width: 100
+        height: 310
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70873c15002de134583cde612e04ccaa
+      internalID: 187181232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_40
+      rect:
+        serializedVersion: 2
+        x: 970
+        y: 680
+        width: 150
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23e7f51357eccdb41b998173a91c7050
+      internalID: -393919424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_41
+      rect:
+        serializedVersion: 2
+        x: 1350
+        y: 860
+        width: 180
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0550d78d55b6d0b4296ad44d40f6f188
+      internalID: 823552499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_42
+      rect:
+        serializedVersion: 2
+        x: 1350
+        y: 700
+        width: 180
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7146dc84743e1b948bb69241d49bd89e
+      internalID: 1345864249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_43
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 320
+        width: 240
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c26866398b3dec46a3d077c082c3514
+      internalID: 1920117340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_44
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 480
+        width: 120
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee72bc12edac49c46b800172bb536500
+      internalID: 428803261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_45
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 480
+        width: 120
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 422daefa249da2a47bcb0f41fe159104
+      internalID: 996792954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_46
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 320
+        width: 260
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef694e50f3ee828489aabf8988a96b7d
+      internalID: -432204431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_47
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 480
+        width: 100
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88b3d03b1db9e494d9db53a0fe8cb46d
+      internalID: 1016935287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_48
+      rect:
+        serializedVersion: 2
+        x: 1150
+        y: 480
+        width: 100
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b54e85b3fd1da5548b4c68db276e6ed6
+      internalID: 833475946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_49
+      rect:
+        serializedVersion: 2
+        x: 1310
+        y: 480
+        width: 100
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31683cc45c402c14cabf10fe68b53006
+      internalID: -1772648728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_50
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 480
+        width: 100
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5af1d79b7515e1c4e9ca25d71cb85a5c
+      internalID: -60437791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_51
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 320
+        width: 280
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af4930d96f005ba4a8d1b30ae35b30b3
+      internalID: 1561017304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_52
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 320
+        width: 100
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24461f4293c6e0e44bb824ce366f471d
+      internalID: 792964468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_53
+      rect:
+        serializedVersion: 2
+        x: 1150
+        y: 320
+        width: 100
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3f1b2462755e3346a301e07945ed522
+      internalID: 454443401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_54
+      rect:
+        serializedVersion: 2
+        x: 1310
+        y: 320
+        width: 100
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 798b0322f35c9984fb9bdcb93c7ebbcd
+      internalID: -317231300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_55
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 320
+        width: 100
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 263117a566dd45a47843d6d53a3e08a7
+      internalID: -329584052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_56
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 0
+        width: 240
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ae862068ebed07488ee94cdf3031bfa
+      internalID: 1781489994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_57
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 160
+        width: 120
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6cfae1775b57fa458d8ded60b2aae41
+      internalID: -1053922473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_58
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 160
+        width: 120
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b543204f0bf0f84abd515964ae89f45
+      internalID: -1919246023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_59
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 0
+        width: 260
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30774f9b7e8bf4d458a2bf345b68961b
+      internalID: -978230476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_60
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 160
+        width: 100
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68de2243781afd24a8e3b29065ebcb58
+      internalID: 281087589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_61
+      rect:
+        serializedVersion: 2
+        x: 1130
+        y: 10
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7af4b84cb4b612546b68667d7b0c5497
+      internalID: 2086030393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_62
+      rect:
+        serializedVersion: 2
+        x: 1460
+        y: 0
+        width: 120
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dd18fda4099c2d4c965fc9777ded59f
+      internalID: -1767539798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_63
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 0
+        width: 280
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7e180365e4cb7a4ab1ce23e2bc2caca
+      internalID: -7173941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Biome3Decs_64
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 0
+        width: 100
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c9581824f7328841a74f0a640b45679
+      internalID: -475438577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Cave_Biome3Decs_0: 282769823
+      Cave_Biome3Decs_1: -1205559228
+      Cave_Biome3Decs_10: 1366017023
+      Cave_Biome3Decs_11: -694902272
+      Cave_Biome3Decs_12: -1344654168
+      Cave_Biome3Decs_13: -992782686
+      Cave_Biome3Decs_14: 1708981457
+      Cave_Biome3Decs_15: -1262169119
+      Cave_Biome3Decs_16: -1979592467
+      Cave_Biome3Decs_17: -1259406298
+      Cave_Biome3Decs_18: 564445999
+      Cave_Biome3Decs_19: -1989141599
+      Cave_Biome3Decs_2: -765933013
+      Cave_Biome3Decs_20: -528098905
+      Cave_Biome3Decs_21: 1611435511
+      Cave_Biome3Decs_22: 1880936277
+      Cave_Biome3Decs_23: 817158569
+      Cave_Biome3Decs_24: -6156317
+      Cave_Biome3Decs_25: -791364177
+      Cave_Biome3Decs_26: 1198418252
+      Cave_Biome3Decs_27: 428400647
+      Cave_Biome3Decs_28: -54796145
+      Cave_Biome3Decs_29: -232434054
+      Cave_Biome3Decs_3: -354022821
+      Cave_Biome3Decs_30: 1072882
+      Cave_Biome3Decs_31: -131429716
+      Cave_Biome3Decs_32: -322405653
+      Cave_Biome3Decs_33: -1812919540
+      Cave_Biome3Decs_34: -535536980
+      Cave_Biome3Decs_35: -146221149
+      Cave_Biome3Decs_36: 143387162
+      Cave_Biome3Decs_37: 1994591007
+      Cave_Biome3Decs_38: 1889180996
+      Cave_Biome3Decs_39: 187181232
+      Cave_Biome3Decs_4: 2053451290
+      Cave_Biome3Decs_40: -393919424
+      Cave_Biome3Decs_41: 823552499
+      Cave_Biome3Decs_42: 1345864249
+      Cave_Biome3Decs_43: 1920117340
+      Cave_Biome3Decs_44: 428803261
+      Cave_Biome3Decs_45: 996792954
+      Cave_Biome3Decs_46: -432204431
+      Cave_Biome3Decs_47: 1016935287
+      Cave_Biome3Decs_48: 833475946
+      Cave_Biome3Decs_49: -1772648728
+      Cave_Biome3Decs_5: 6359109
+      Cave_Biome3Decs_50: -60437791
+      Cave_Biome3Decs_51: 1561017304
+      Cave_Biome3Decs_52: 792964468
+      Cave_Biome3Decs_53: 454443401
+      Cave_Biome3Decs_54: -317231300
+      Cave_Biome3Decs_55: -329584052
+      Cave_Biome3Decs_56: 1781489994
+      Cave_Biome3Decs_57: -1053922473
+      Cave_Biome3Decs_58: -1919246023
+      Cave_Biome3Decs_59: -978230476
+      Cave_Biome3Decs_6: -1701947568
+      Cave_Biome3Decs_60: 281087589
+      Cave_Biome3Decs_61: 2086030393
+      Cave_Biome3Decs_62: -1767539798
+      Cave_Biome3Decs_63: -7173941
+      Cave_Biome3Decs_64: -475438577
+      Cave_Biome3Decs_7: -29283897
+      Cave_Biome3Decs_8: 83692794
+      Cave_Biome3Decs_9: 838422149
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

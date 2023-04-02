@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class PlayerInfo : Character
 {
-    [SerializeField] int startHP;
+    public HpStat health;
+    public HpStat working;
+
+    private float initHealth = 100;
+    private float initWorking = 50;
+
+
     public static PlayerInfo player;
     private void Awake()
     {
@@ -18,6 +24,30 @@ public class PlayerInfo : Character
         {
             Destroy(gameObject);
         }
-        HP = player.startHP;
+    }
+
+    protected override void Start()
+    {
+        health.Initialize(initHealth, initHealth);
+        working.Initialize(initWorking, initWorking);
+
+        base.Start();
+    }
+
+    private void Update()
+    {
+        /*
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            health.MyCurrentValue -= 10;
+            working.MyCurrentValue -= 10;
+        }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            health.MyCurrentValue += 10;
+            working.MyCurrentValue += 10;
+        }
+        */
     }
 }
