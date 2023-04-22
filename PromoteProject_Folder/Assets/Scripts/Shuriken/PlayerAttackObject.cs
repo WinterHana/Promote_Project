@@ -11,7 +11,8 @@ public class PlayerAttackObject : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             PlayerInfo info = collision.GetComponent<PlayerInfo>();
-            info.health.MyCurrentValue -= damege;
+            info.Hphealth.MyCurrentValue -= damege;
+            PlayerStat.instance.health -= damege;
         }
     }
 }

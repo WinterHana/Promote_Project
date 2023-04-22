@@ -6,6 +6,7 @@ using TMPro;
 
 public class HpStat : MonoBehaviour
 {
+    // HP 조절에 대한 것
     [SerializeField] private Image content;
     [SerializeField] private TextMeshProUGUI statText;
 
