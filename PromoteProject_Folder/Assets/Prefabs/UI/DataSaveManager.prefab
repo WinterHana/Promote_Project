@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6415774269353675367}
   - component: {fileID: 6415774269353675366}
   m_Layer: 0
-  m_Name: DataSaveTest
+  m_Name: DataSaveManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

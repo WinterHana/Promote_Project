@@ -7,7 +7,7 @@ public class SaveTest : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        DataManager.instance.JsonLoad(); 
+        DataManager.instance.JsonLoad();
     }
 
     private void OnApplicationQuit()

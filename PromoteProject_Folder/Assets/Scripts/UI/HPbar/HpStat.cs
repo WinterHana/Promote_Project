@@ -31,10 +31,9 @@ public class HpStat : MonoBehaviour
         }
     }
 
-    private void Awake()
+    private void Start()
     {
         content = GetComponent<Image>();
-
     }
 
     private void Update()

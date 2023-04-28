@@ -9,8 +9,9 @@ public class ShurikenController : PlayerAttackObject
     [SerializeField] float moveSpeed = 3.0f;
     float rotateSpeed = 1000.0f;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         pos = transform.position; 
     }
 

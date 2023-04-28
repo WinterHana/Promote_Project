@@ -14,4 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LoadingScene.unity
     guid: c635a338ec6b727419d52006aa4ba212
+  - enabled: 1
+    path: Assets/Scenes/HomeTown.unity
+    guid: 78aa5cd18d0616e4d8e856c75defe11f
+  - enabled: 1
+    path: Assets/Scenes/SelectPractice.unity
+    guid: 902ccf2a0da00ac4f85dc99cbe93438a
+  - enabled: 1
+    path: Assets/Scenes/SelectBank.unity
+    guid: 380db7152da89a04ea44a49aba05aa0c
   m_configObjects: {}

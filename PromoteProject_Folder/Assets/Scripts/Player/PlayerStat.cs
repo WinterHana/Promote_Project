@@ -18,7 +18,6 @@ public class PlayerStat : MonoBehaviour
     public float maxWorking;        // 최대 피로도
 
 
-
     public void Awake()
     {
         if (instance == null)
