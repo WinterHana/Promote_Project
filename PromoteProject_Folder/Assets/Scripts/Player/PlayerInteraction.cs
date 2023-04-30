@@ -11,7 +11,6 @@ public class PlayerInteraction : MonoBehaviour
         // 상호작용이 일어나면 발생시키기
         if (Input.GetButtonDown("Interaction")) 
         {
-            // Debug.Log("Interaction");
             Interaction();
         }   
     }

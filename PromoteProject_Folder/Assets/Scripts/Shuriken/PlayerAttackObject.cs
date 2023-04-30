@@ -5,20 +5,18 @@ using UnityEngine;
 public class PlayerAttackObject : MonoBehaviour
 {
     [SerializeField] float damege;
-    [SerializeField] PlayerInfo playerInfo;
+    [SerializeField] PlayerHPController playerHP;
 
     protected virtual void Start()
     {
-        playerInfo = GameObject.FindGameObjectWithTag("HPCanvas").GetComponent<PlayerInfo>();
-        if (playerInfo == null) Debug.Log("PlayerAttackObject 못찾음");
-        else Debug.Log("PlayerAttackObject 찾음");
+        playerHP = GameObject.FindGameObjectWithTag("HPCanvas").GetComponent<PlayerHPController>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            playerInfo.Hphealth.MyCurrentValue -= damege;
+            playerHP.Hphealth.MyCurrentValue -= damege;
             PlayerStat.instance.health -= damege;
         }
     }

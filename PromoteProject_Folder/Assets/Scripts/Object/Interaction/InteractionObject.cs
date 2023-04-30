@@ -7,14 +7,17 @@ using UnityEngine;
 public abstract class InteractionObject : MonoBehaviour
 {
     private PlayerInteraction player;
+    public DialogManager diaManager;
 
     public abstract void Interaction();     // 여기에 상호작용할 내용을 구현한다.
+    protected bool isPlayerIn = false;
 
     // 상호작용할 물체는 Ontrigger로 설정을 통일한다.
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player")) 
         {
+            isPlayerIn = true;
             player = collision.gameObject.GetComponent<PlayerInteraction>();
 
             if (player != null)
@@ -26,14 +29,16 @@ public abstract class InteractionObject : MonoBehaviour
     }
 
     private void OnTriggerExit2D(Collider2D collision)
-    {
+    { 
         if (collision.CompareTag("Player"))
         {
+            isPlayerIn = false;
             if (player != null)
             {
                 player.interactionObjects.Clear();
                 player = null;
             }
+            if (diaManager != null) diaManager.exitAction();
         }
     }
 }

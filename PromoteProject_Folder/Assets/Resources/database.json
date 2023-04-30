@@ -1,0 +1,10 @@
+{
+    "exp": 0,
+    "endurance": 12,
+    "strength": 8,
+    "intelligence": 2,
+    "health": 100.0,
+    "maxHealth": 100.0,
+    "working": 50.0,
+    "maxWorking": 50.0
+}

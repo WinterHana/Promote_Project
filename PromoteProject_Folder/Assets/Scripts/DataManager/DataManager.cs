@@ -31,11 +31,8 @@ public class DataManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
 
-    private void Start()
-    {
-        path = Path.Combine(Application.dataPath, "Database/database.json");
+        path = Path.Combine(Application.dataPath, "Resources/database.json");
         JsonLoad();
     }
 
