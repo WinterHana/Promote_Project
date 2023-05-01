@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// 플레이어 데이터 저장
 public class SaveTest : MonoBehaviour
 {
     private void Start()

@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class InteractionTelephone : InteractionObject 
 {
-    public int objID;
-    public int dialogueID;
+    public DialogueInfo dialogueInfo;
 
     public override void Interaction() 
     {
-        diaManager.Action(objID, dialogueID);
+        diaManager.Action(dialogueInfo.objID, dialogueInfo.dialogueID);
     }
 }

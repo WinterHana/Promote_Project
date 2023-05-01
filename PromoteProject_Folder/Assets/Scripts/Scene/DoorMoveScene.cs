@@ -8,7 +8,7 @@ public class DoorMoveScene : MonoBehaviour
     bool upArrow;
     private void Update()
     {
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow)) 
             upArrow = true;
         else
             upArrow = false;

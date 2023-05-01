@@ -35,6 +35,11 @@ public class TalkManager : MonoBehaviour
         if (line == dialogues[id].lines.Length)
             return null;
         else
-            return dialogues[id].lines[line++];
+            return dialogues[id].lines[line];
+    }
+
+    public string GetName(int id)
+    {
+        return dialogues[id].objname;
     }
 }
