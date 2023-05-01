@@ -16,19 +16,19 @@ public class SpriteOutline : MonoBehaviour
     [Range(0, 16)]
     public int outlineSize = 1;
     private SpriteRenderer spriteRenderer;
-    GameObject keyX;
+    GameObject key;
     void OnEnable()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        keyX = transform.GetChild(0).gameObject;
+        key = transform.GetChild(0).gameObject;
 
-        keyX.SetActive(false);
+        key.SetActive(false);
     }
 
     void OnDisable()
     {
         UpdateOutline(false);
-        keyX.SetActive(false);
+        key.SetActive(false);
     }
 
     /*
@@ -53,7 +53,7 @@ public class SpriteOutline : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             UpdateOutline(true);
-            keyX.SetActive(true);
+            key.SetActive(true);
         }
     }
 
@@ -62,7 +62,7 @@ public class SpriteOutline : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             UpdateOutline(false);
-            keyX.SetActive(false);
+            key.SetActive(false);
         }
     }
 }
