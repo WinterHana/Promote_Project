@@ -3,8 +3,8 @@
     "endurance": 6,
     "strength": 9,
     "intelligence": 6,
-    "health": 60.0,
+    "health": 100.0,
     "maxHealth": 100.0,
-    "working": 10.0,
+    "working": 50.0,
     "maxWorking": 50.0
 }

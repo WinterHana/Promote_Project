@@ -22,6 +22,10 @@ public class GameManager : MonoBehaviour
     public float setTimeMedium;
     public float setTimeHard;
 
+    [Space]
+    [Header("스테이지 클리어 여부 확인")]
+    public bool stageClaer;
+    
     public static GameManager instance; 
 
     private void Awake()
@@ -35,10 +39,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    private void Start()
-    {
     }
 
     // 낮밤을 바꿈
@@ -62,6 +62,8 @@ public class GameManager : MonoBehaviour
     // 체인을 걸어서 이 함수는 매 씬마다 호출된다.
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        // 변수 초기화
+        stageClaer = false;
         // 은행 털이를 시작할 때, 제한시간을 설정한다.
         if (SceneManager.GetActiveScene().buildIndex == (int)BankScene.Easy)
         {
@@ -78,5 +80,9 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
+    public void goToHomeTown()
+    {
+        LoadingSceneController.LoadScene("HomeTown");
+    }
 }
 
