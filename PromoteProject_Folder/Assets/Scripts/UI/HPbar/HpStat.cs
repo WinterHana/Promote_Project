@@ -11,17 +11,16 @@ public class HpStat : MonoBehaviour
     [SerializeField] private TextMeshProUGUI statText;
 
     private float currentFill;
-    public float MyMaxValue { get; set; }
+
+    public float MyMaxValue;
 
     private float currentValue;
     public float MyCurrentValue
     {
-        get 
-        {
+        get {
             return currentValue;
         }
-        set
-        {
+        set {
             if (value > MyMaxValue) currentValue = MyMaxValue;
             else if (value < 0) currentValue = 0;
             else currentValue = value;

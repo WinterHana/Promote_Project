@@ -8,22 +8,24 @@ using TMPro;
 [System.Serializable]
 public class StatContent : MonoBehaviour
 {
-    public TextMeshProUGUI statText;
+    [Header("각 스탯 내용을 넣을 텍스트 오브젝트 삽입")]
+    [SerializeField] private TextMeshProUGUI expText;
+    [SerializeField] private TextMeshProUGUI endurnaceText;
+    [SerializeField] private TextMeshProUGUI strengthText;
+    [SerializeField] private TextMeshProUGUI intelligenceText;
+    [SerializeField] private TextMeshProUGUI moneyText;
+    [SerializeField] private TextMeshProUGUI maxMoneyText;
 
-    // 파싱한 데이터를 저장한다.
-    string exp;               // 경험치
-    string endurance;         // 지구력
-    string strength;          // 근력
-    string intelligence;      // 지능
-    string health;          // 체력
-    string maxHealth;       // 최대 체력
-    string working;         // 피로도
-    string maxWorking;      // 최대 피로도
 
-    private void Awake()
-    {
+    // PlayerStat의 데이터를 저장한다.
+    int money;               // 돈
+    int maxMoney;            // 목표한 돈
+    int exp;                 // 경험치
+    int endurance;           // 지구력
+    int strength;            // 근력
+    int intelligence;        // 지능
 
-    }
+    int remind;            // 목표치를 퍼센트로 나타낸다.
 
     private void Update()
     {
@@ -33,24 +35,21 @@ public class StatContent : MonoBehaviour
     void statUpdate()
     {
         // 저장된 데이터를 가져온다.
-        exp = PlayerStat.instance.exp.ToString();
-        endurance = PlayerStat.instance.endurance.ToString();
-        strength = PlayerStat.instance.strength.ToString();
-        intelligence = PlayerStat.instance.intelligence.ToString();
-        health = PlayerStat.instance.health.ToString();
-        maxHealth = PlayerStat.instance.maxHealth.ToString();
-        working = PlayerStat.instance.working.ToString();
-        maxWorking = PlayerStat.instance.maxWorking.ToString();
+        exp = PlayerStat.instance.exp;
+        endurance = PlayerStat.instance.endurance;
+        strength = PlayerStat.instance.strength;
+        intelligence = PlayerStat.instance.intelligence;
+        money = PlayerStat.instance.money;
+        maxMoney = PlayerStat.instance.maxMoney;
 
-        // 텍스트를 전시할 Text 오브젝트를 가져온다
-        statText.text =
-            "경험치 : " + exp + "\n" +
-            "인내심 : " + endurance + "\n" +
-            "힘 : " + strength + "\n" +
-            "지능 : " + intelligence + "\n" +
-            "현재 체력 : " + health + "\n" +
-            "최대 체력 : " + maxHealth + "\n" +
-            "현재 피로도 : " + working + "\n" +
-            "최대 피로도 : " + maxWorking + "\n";
+        remind = maxMoney - money;
+
+        expText.text = $"경험치 : {exp}";
+        endurnaceText.text = $"인내심 : {endurance}";
+        strengthText.text = $"근 력 : {strength}";
+        intelligenceText.text = $"지 능 : {intelligence}";
+        moneyText.text = $"현재 지닌 돈 : {money}";
+        maxMoneyText.text = $"목표한 돈 : {maxMoney}\n" +
+            $"앞으로 {remind}원 남았습니다. ";
     }
 }
