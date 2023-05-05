@@ -4,11 +4,32 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
+// 난이도에 따른 맵 이동
 public enum BankScene
 {
-    Easy = 0,
-    Medium = 1,
-    Hard = 2
+    Easy_Step1 = 1,
+    Easy_Step2 = 2,
+    Easy_Step3 = 3,
+    Medium_Step1 = 4,
+    Medium_Step2 = 5,
+    Medium_Step3 = 6,
+    Hard_Step1 = 7,
+    Hard_Step2 = 8,
+    Hard_Step3 = 9
+}
+
+public enum Difficulty
+{
+    Easy = 1,
+    Medium = 2,
+    Hard = 3
+}
+
+public enum Step
+{
+    step1 = 1,
+    step2 = 2,
+    step3 = 3
 }
 
 public class GameManager : MonoBehaviour
@@ -22,8 +43,18 @@ public class GameManager : MonoBehaviour
     public float setTimeMedium;
     public float setTimeHard;
 
-    public static GameManager instance; 
+    [Space]
+    [Header("스테이지 클리어 여부 확인")]
+    public bool stageClaer;
+    public bool isReward;
 
+    [Space]
+    [Header("맵의 난이도와 그 내의 단계")]
+    public Difficulty difficulty;
+    public Step step;
+
+    int sceneNum;               // 씬 번호
+    public static GameManager instance; 
     private void Awake()
     {
         if (instance == null)
@@ -35,10 +66,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    private void Start()
-    {
     }
 
     // 낮밤을 바꿈
@@ -62,9 +89,16 @@ public class GameManager : MonoBehaviour
     // 체인을 걸어서 이 함수는 매 씬마다 호출된다.
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        // 변수 초기화
+        stageClaer = false;
+        isReward = false;
+        sceneNum = SceneManager.GetActiveScene().buildIndex;
+
         // 은행 털이를 시작할 때, 제한시간을 설정한다.
-        if (SceneManager.GetActiveScene().buildIndex == (int)BankScene.Easy)
+        if (sceneNum == (int)BankScene.Easy_Step1)
         {
+            difficulty = Difficulty.Easy;
+            step = Step.step1;
             TimeManager.instance.isStartTimeAttack();
             TimeManager.instance.setReminingTime(setTimeEasy);
         }
@@ -78,5 +112,20 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
+    public void goToHomeTown()
+    {
+        LoadingSceneController.LoadScene("HomeTown");
+    }
+
+    public int moneyRewird()
+    {
+        int reward = 10000 + (int)difficulty * (3000000 * PlayerStat.instance.intelligence + 10000000 * (int)step);
+        if (!isReward)
+        {
+            PlayerStat.instance.money += reward;
+            isReward = true;
+        }
+        return reward;
+    }
 }
 

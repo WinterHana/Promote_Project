@@ -15,7 +15,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     const float GRAVITYSCALE = 2.0f;
-
+    [Header("플레이어 물리 상태 설정")]
     [SerializeField] float playerSize;
     [SerializeField] float maxSpeed;
     [SerializeField] float walkSpeed;
@@ -24,6 +24,10 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] float climbSpeed;
     [SerializeField] float rcDistance;
     [SerializeField] LayerMask whatIsLadder;
+    [Space]
+    [Header("플레이어 움직임 여부")]
+    public static bool isMove;      // 많이 쓸 거 같아서 static으로 만듬
+
     Rigidbody2D rigid;
     Animator ani;
     CapsuleCollider2D standCol;
@@ -58,24 +62,33 @@ public class PlayerMove : MonoBehaviour
         boxCol.enabled = false;
 
         walkSpeed = maxSpeed;
+
+        isMove = true;
     }
     
     void Update()
     {
-        jump(); 
-        sit();
-        ladder();
-        // 키보드에서 손을 땠을 때 완전 멈추기
-        if (Input.GetButtonUp("Horizontal"))
+        if (isMove) 
         {
-            rigid.velocity = new Vector2(rigid.velocity.normalized.x * 0.5f, rigid.velocity.y);
+            jump();
+            sit();
+            ladder();
+            // 키보드에서 손을 땠을 때 완전 멈추기
+            if (Input.GetButtonUp("Horizontal"))
+            {
+                rigid.velocity = new Vector2(rigid.velocity.normalized.x * 0.5f, rigid.velocity.y);
+            }
         }
     }
 
     void FixedUpdate()
     {
-        move();
-        notJump();
+        if (isMove)
+        {
+            move();
+            notJump();
+        }
+
     }
 
     // 좌우로 움직임

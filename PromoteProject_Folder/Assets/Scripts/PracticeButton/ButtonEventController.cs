@@ -19,6 +19,13 @@ public class ButtonEventController : MonoBehaviour
             PlayerStat.instance.working -= 10;           // 실제 스탯에서
             // 인내심 증가
             PlayerStat.instance.endurance++;
+            // 효과 : 최대 체력 증가.
+            PlayerStat.instance.maxHealth = 100 + PlayerStat.instance.endurance * 10;
+            PlayerStat.instance.health += 10;
+            // 효과 -> UI에 직접 반영하기
+            playerHP.Hphealth.MyMaxValue = PlayerStat.instance.maxHealth;
+            playerHP.Hphealth.MyCurrentValue = PlayerStat.instance.health;
+
         }
     }
 
@@ -31,6 +38,8 @@ public class ButtonEventController : MonoBehaviour
             PlayerStat.instance.working -= 10;           // 실제 스탯에서
             // 힘 증가
             PlayerStat.instance.strength++;
+            // 효과 : 공격 데미지 증가
+            PlayerStat.instance.atkDamege = 10 + PlayerStat.instance.strength * 5;
         }
     }
 
@@ -43,6 +52,7 @@ public class ButtonEventController : MonoBehaviour
             PlayerStat.instance.working -= 10;           // 실제 스탯에서
             // 지능 증가
             PlayerStat.instance.intelligence++;
+            
         }
     }
 }

@@ -19,10 +19,11 @@ public class TimeManager : MonoBehaviour
 
 
     // 제한 시간 설정
-    float setTime;
+    [Header("남은 시간")]
+    public float setTime;
 
     // 제한 시간이 지났는지 확인
-    bool isOverTime;
+    public bool isOverTime;
 
     public static TimeManager instance;
 
@@ -72,7 +73,8 @@ public class TimeManager : MonoBehaviour
             
             TimeRemining.text = "남은 시간 : " + (int)setTime + "초";
 
-            setTime -= Time.deltaTime;
+            // 클리어할 때까지 시간 지나게 하기
+            if(GameManager.instance.stageClaer == false) setTime -= Time.deltaTime;
 
             if (setTime < 0f) {
                 isOverTime = true;

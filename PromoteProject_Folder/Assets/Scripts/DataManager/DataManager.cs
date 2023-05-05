@@ -5,21 +5,45 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [System.Serializable]
-public class SaveData {
-    public int exp;               // 경험치
-    public int endurance;         // 지구력
-    public int strength;          // 근력
-    public int intelligence;      // 지능
-    public float health;          // 체력
-    public float maxHealth;       // 최대 체력
-    public float working;         // 피로도
-    public float maxWorking;      // 최대 피로도
+public class SavePlayerStat {
+    public int exp;                 // 경험치
+    public int money;               // 현재 돈
+    public int maxMoney;            // 목표한 돈
+    public int endurance;           // 지구력
+    public int strength;            // 근력
+    public int intelligence;        // 지능
+    public int atkDamege;           // 적에게 주는 데미지
+    public float health;            // 체력
+    public float maxHealth;         // 최대 체력
+    public float working;           // 피로도
+    public float maxWorking;        // 최대 피로도
+
+    public void saveData(int _exp, int _money, int _maxMoney, int _endurance, int _strength,
+    int _intelligence, int _atkDamege, float _health, float _maxHealth, float _working, float _maxWorking)
+    {
+        exp = _exp;
+        money = _money;
+        maxMoney = _maxMoney;
+        endurance = _endurance;
+        strength = _strength;
+        intelligence = _intelligence;
+        atkDamege = _atkDamege;
+        health = _health;
+        maxHealth = _maxHealth;
+        working = _working;
+        maxWorking = _maxWorking;
+    }
 }
 
 public class DataManager : MonoBehaviour
 {
     string path;
     public static DataManager instance;
+
+    // 스탯에 따라 변동하는 수치는 따로 저장
+    float maxHealthSave;
+    int atkDamegeSave;
+
     public void Awake()
     {
         if (instance == null)
@@ -37,45 +61,34 @@ public class DataManager : MonoBehaviour
     }
 
     public void JsonLoad() {
-        SaveData saveData = new SaveData();
-
+        
+        // 기본적인 스탯 설정
         if (!File.Exists(path))
         {
-            PlayerStat.instance.health = 100;
-            PlayerStat.instance.working = 50;
-            PlayerStat.instance.maxHealth = 100;
-            PlayerStat.instance.maxWorking = 50;
+            PlayerStat.instance.saveData(0, 0, 0, 0, 0, 0, 10, 100, 100, 50, 50);
         }
         else { 
             string loadJson = File.ReadAllText(path);
-            saveData = JsonUtility.FromJson<SaveData>(loadJson);
+            SavePlayerStat savePlayerStat = new SavePlayerStat();
+            savePlayerStat = JsonUtility.FromJson<SavePlayerStat>(loadJson);
 
-            if (saveData != null) { 
-                PlayerStat.instance.health = saveData.health;
-                PlayerStat.instance.working = saveData.working;
-                PlayerStat.instance.maxHealth = saveData.maxHealth;
-                PlayerStat.instance.maxWorking = saveData.maxWorking;
-                PlayerStat.instance.exp = saveData.exp;
-                PlayerStat.instance.endurance = saveData.endurance;
-                PlayerStat.instance.strength = saveData.strength;
-                PlayerStat.instance.intelligence = saveData.intelligence;
+            if (savePlayerStat != null)
+            {
+                PlayerStat.instance.saveData(savePlayerStat.exp, savePlayerStat.money, savePlayerStat.maxMoney,
+                    savePlayerStat.endurance, savePlayerStat.strength, savePlayerStat.intelligence, savePlayerStat.atkDamege,
+                    savePlayerStat.health, savePlayerStat.maxHealth, savePlayerStat.working, savePlayerStat.maxWorking);
             }
         }
     }
 
     public void JsonSave() {
-        SaveData saveData = new SaveData();
+        SavePlayerStat savePlayerStat = new SavePlayerStat();
 
-        saveData.health = PlayerStat.instance.health;
-        saveData.maxHealth = PlayerStat.instance.maxHealth;
-        saveData.working = PlayerStat.instance.working;
-        saveData.maxWorking = PlayerStat.instance.maxWorking;
-        saveData.exp = PlayerStat.instance.exp;
-        saveData.endurance = PlayerStat.instance.endurance;
-        saveData.strength = PlayerStat.instance.strength;
-        saveData.intelligence = PlayerStat.instance.intelligence;
+        savePlayerStat.saveData(PlayerStat.instance.exp, PlayerStat.instance.money, PlayerStat.instance.maxMoney,
+            PlayerStat.instance.endurance, PlayerStat.instance.strength, PlayerStat.instance.intelligence, PlayerStat.instance.atkDamege,
+            PlayerStat.instance.health, PlayerStat.instance.maxHealth, PlayerStat.instance.working, PlayerStat.instance.maxWorking);
 
-        string json = JsonUtility.ToJson(saveData, true);
+        string json = JsonUtility.ToJson(savePlayerStat, true);
 
         File.WriteAllText(path, json);
     }

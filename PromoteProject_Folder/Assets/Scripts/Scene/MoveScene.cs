@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MoveScene : MonoBehaviour
 {
     [SerializeField] string nextScene;
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
