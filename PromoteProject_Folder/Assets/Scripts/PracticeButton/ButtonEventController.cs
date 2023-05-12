@@ -5,13 +5,17 @@ using UnityEngine;
 public class ButtonEventController : MonoBehaviour
 {
     [SerializeField] PlayerHPController playerHP;
+    // [SerializeField] SelectPopUpManager selectPopUpManager;
     private void Start()
     {
         playerHP = GameObject.FindGameObjectWithTag("HPCanvas").GetComponent<PlayerHPController>();
+        // selectPopUpManager = GameObject.FindGameObjectWithTag("SelectPopUp").GetComponent<SelectPopUpManager>();
     }
 
     public void UpEndurance()
-    {    
+    {
+        SelectPopUpManager.instance.OpenPopUp(1001);
+
         if (PlayerStat.instance.working >= 10)
         {
             // 행동치 감소
