@@ -1030,7 +1030,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -50}
-  m_SizeDelta: {x: 400, y: 100}
+  m_SizeDelta: {x: 600, y: 200}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &8283402356337982434
 CanvasRenderer:
@@ -1087,8 +1087,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 42
+  m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1489,7 +1489,7 @@ MonoBehaviour:
   accept: {fileID: 7869550415741445559}
   cancel: {fileID: 7456087298239702749}
   sign: 0
-  num: 0
+  isSelect: 0
 --- !u!1 &3214669015029947681
 GameObject:
   m_ObjectHideFlags: 0
@@ -1919,7 +1919,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 100, y: 50}
-  m_SizeDelta: {x: 60, y: 60}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &5170314403271324243
 CanvasRenderer:
@@ -2414,7 +2414,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 300}
+  m_SizeDelta: {x: 600, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4689851664037903988
 CanvasRenderer:
@@ -2491,7 +2491,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -100, y: 50}
-  m_SizeDelta: {x: 60, y: 60}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &2761696455695446797
 CanvasRenderer:

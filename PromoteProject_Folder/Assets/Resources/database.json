@@ -2,12 +2,12 @@
     "exp": 0,
     "money": 379040000,
     "maxMoney": 1000000000,
-    "endurance": 64,
-    "strength": 55,
+    "endurance": 65,
+    "strength": 56,
     "intelligence": 53,
-    "atkDamege": 285,
-    "health": 740.0,
-    "maxHealth": 740.0,
-    "working": 8280.0,
+    "atkDamege": 290,
+    "health": 750.0,
+    "maxHealth": 750.0,
+    "working": 8260.0,
     "maxWorking": 10000.0
 }

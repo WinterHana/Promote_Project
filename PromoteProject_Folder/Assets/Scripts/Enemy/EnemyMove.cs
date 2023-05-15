@@ -2,23 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMove : EnemySight
+// 컴포넌트가 없으면 자동으로 추가
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(CircleCollider2D))]
+[RequireComponent(typeof(Animator))]
+public class EnemyMove : MonoBehaviour
 {
+    [Header("Speed 설정")]
+    public float pursuitSpeed;      // 적이 플레이어를 추적하는 속도
+    public float wanderSpeed;       // 평상시의 적 속도
+    public float currentSpeed;      // 앞의 둘 중에서 선택할 현재 속도
+
+    [Header("추적 여부 결정")]
+    public bool followPlayer;               // 추적할 여부 결정
+
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
+    CircleCollider2D circle;
     Animator anim;
     protected int nextMove; // 행동지표를 결정할 변수
 
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
+        circle = GetComponent<CircleCollider2D>();
         rigid.freezeRotation = true;
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        setViewRotateZ(90f);
+        Invoke("Think", 1.5f);     // 1.5초마다 Think 함수 실행
+    }
 
-        Invoke("Think", 3);     // 3초마다 Think 함수 실행
+    private void Start()
+    {
+        currentSpeed = wanderSpeed;
     }
 
     void FixedUpdate()
@@ -29,18 +46,15 @@ public class EnemyMove : EnemySight
     void Think()
     {
         nextMove = Random.Range(-1, 2);                     // -1이면 왼쪽, 0이면 멈추기, 1이면 오른쪽으로 이동
-        anim.SetInteger("WalkSpeed", nextMove);             // 0이면 멈춘 애니, 아니면 움직인 애니
         Debug.Log(nextMove);
-
+        anim.SetInteger("isWalking", nextMove);             // 0이면 멈춘 애니, 아니면 움직인 애니
+        
         if (nextMove != 0)
         {
             spriteRenderer.flipX = (nextMove == -1);        // 처음에 오른쪽을 보고 시작, 왼쪽으로 이동 시 전환
-            if (nextMove == 1) setViewRotateZ(90f);         // 시야의 방향 전환
-            else if(nextMove == -1) setViewRotateZ(-90f);
         }
 
-
-        float nextThinkTime = Random.Range(2f, 5f);
+        float nextThinkTime = Random.Range(1f, 2f);
 
         Invoke("Think", nextThinkTime);                     // 5초마다 Think 함수 실행 by 재귀함수
     }
@@ -48,27 +62,53 @@ public class EnemyMove : EnemySight
     void move()
     {
         // 한 방향으로 움직임
-        rigid.velocity = new Vector2(nextMove, rigid.velocity.y);
+        rigid.velocity = new Vector2(nextMove * currentSpeed, rigid.velocity.y);
 
-        // 플렛폼(발판) 확인
-        Vector2 frontVec = new Vector2(rigid.position.x + nextMove * 0.3f, rigid.position.y);
-        Debug.DrawRay(frontVec, Vector2.down * 1.0f, new Color(0, 1, 0));
+        // 플렛폼(발판) 아래 확인
+        Vector2 frontVec = new Vector2(rigid.position.x + nextMove, rigid.position.y);
+        RaycastHit2D rayHitDown = Physics2D.Raycast(frontVec, Vector2.down, 1.5f, LayerMask.GetMask("tiles"));
+        Debug.DrawRay(frontVec, Vector2.down* 1.5f, new Color(0, 1, 0));
 
-        RaycastHit2D rayHit = Physics2D.Raycast(frontVec, Vector3.down, LayerMask.GetMask("tiles"));
+        // 플렛폼(발판) 옆 확인
+        RaycastHit2D rayHitFront = Physics2D.Raycast(frontVec, new Vector2(1, 0) * nextMove, 1.0f, LayerMask.GetMask("tiles"));
+        Debug.DrawRay(frontVec, new Vector2(1, 0) * nextMove, new Color(0, 1, 0));
 
-        if (rayHit.collider == null)
+        if (rayHitDown.collider == null || rayHitFront.collider != null)
         {
-            Turn();
+            StartCoroutine(TurnDelay());
         }
     }
 
-    void Turn()
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player") && followPlayer)
+        {
+            currentSpeed = pursuitSpeed;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            currentSpeed = wanderSpeed;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (circle != null)
+        {
+            Gizmos.DrawWireSphere(transform.position, circle.radius);
+        }
+    }
+
+    IEnumerator TurnDelay()
     {
         nextMove = nextMove * (-1);
         spriteRenderer.flipX = (nextMove == -1);     // nextMove가 -1이면 방향 바꾸기
-        reverseViewRotateZ();
-
         CancelInvoke();
-        Invoke("Think", 2);
+        Invoke("Think", 2.0f);
+        yield return new WaitForSeconds(0.5f);
     }
 }
