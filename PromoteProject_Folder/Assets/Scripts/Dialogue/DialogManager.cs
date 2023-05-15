@@ -24,6 +24,7 @@ public class DialogManager : MonoBehaviour
     public TextMeshProUGUI talkText;
     public TextMeshProUGUI talkName;
     public GameObject talkPanel;
+    Animator panelAni;
     [Space]
     public bool endAction;      // 대화가 끝났음을 알려준다.
 
@@ -33,19 +34,20 @@ public class DialogManager : MonoBehaviour
     private void Start()
     {
         endAction = false;
+        panelAni = talkPanel.GetComponent<Animator>();
     }
 
     public void Action(int objID, int dialogueID)
     {
         endAction = Talk(objID, dialogueID);
-        talkPanel.SetActive(isAction);
+        panelAni.SetBool("isShow", isAction);
     }
 
     public void exitAction()        // 대화창 종료
     {
         isAction = false;
         talkIndex = 0;
-        talkPanel.SetActive(isAction);
+        panelAni.SetBool("isShow", isAction);
     }
 
     // 대화 상호작용을 관여함
