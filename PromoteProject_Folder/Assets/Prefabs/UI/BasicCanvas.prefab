@@ -1486,6 +1486,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 6725153895215637822}
   text: {fileID: 194346446549655052}
+  accept: {fileID: 7869550415741445559}
+  cancel: {fileID: 7456087298239702749}
   sign: 0
   num: 0
 --- !u!1 &3214669015029947681
@@ -2000,7 +2002,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4260009683942141648}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2218959212244390316}
+        m_TargetAssemblyTypeName: SelectPopUpManager, Assembly-CSharp
+        m_MethodName: OnYes
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5917267360127223860
 GameObject:
   m_ObjectHideFlags: 0
@@ -2560,7 +2574,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2931633131070087637}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2218959212244390316}
+        m_TargetAssemblyTypeName: SelectPopUpManager, Assembly-CSharp
+        m_MethodName: OnNo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7951179907945243990
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ TagManager:
   - HPBar
   - HPCanvas
   - SelectPopUp
+  - MapSelect
   layers:
   - Default
   - TransparentFX
