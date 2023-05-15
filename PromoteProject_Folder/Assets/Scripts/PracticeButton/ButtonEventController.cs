@@ -5,13 +5,38 @@ using UnityEngine;
 public class ButtonEventController : MonoBehaviour
 {
     [SerializeField] PlayerHPController playerHP;
+    delegate void Action();
+
+    // [SerializeField] SelectPopUpManager selectPopUpManager;
     private void Start()
     {
         playerHP = GameObject.FindGameObjectWithTag("HPCanvas").GetComponent<PlayerHPController>();
+        // selectPopUpManager = GameObject.FindGameObjectWithTag("SelectPopUp").GetComponent<SelectPopUpManager>();
+
+        // 능력치 증가 함수 넣기
+        Action[] action = { EnduranceControl, StrengthControl, IntelligenceControl };
     }
 
     public void UpEndurance()
-    {    
+    {
+        SelectPopUpManager.instance.OpenPopUp(1001);
+        StartCoroutine(SelectCoroutine(EnduranceControl));
+    }
+
+    public void UpStrength()
+    {
+        SelectPopUpManager.instance.OpenPopUp(1002);
+        StartCoroutine(SelectCoroutine(StrengthControl));
+    }
+
+    public void UpIntelligence()
+    {
+        SelectPopUpManager.instance.OpenPopUp(1003);
+        StartCoroutine(SelectCoroutine(IntelligenceControl));
+    }
+
+    void EnduranceControl()
+    {
         if (PlayerStat.instance.working >= 10)
         {
             // 행동치 감소
@@ -25,11 +50,10 @@ public class ButtonEventController : MonoBehaviour
             // 효과 -> UI에 직접 반영하기
             playerHP.Hphealth.MyMaxValue = PlayerStat.instance.maxHealth;
             playerHP.Hphealth.MyCurrentValue = PlayerStat.instance.health;
-
-        }
+        };
     }
 
-    public void UpStrength()
+    void StrengthControl()
     {
         if (PlayerStat.instance.working >= 10)
         {
@@ -43,7 +67,7 @@ public class ButtonEventController : MonoBehaviour
         }
     }
 
-    public void UpIntelligence()
+    void IntelligenceControl()
     {
         if (PlayerStat.instance.working >= 10)
         {
@@ -52,7 +76,17 @@ public class ButtonEventController : MonoBehaviour
             PlayerStat.instance.working -= 10;           // 실제 스탯에서
             // 지능 증가
             PlayerStat.instance.intelligence++;
-            
+
+        }
+    }
+
+    IEnumerator SelectCoroutine(Action action)
+    {
+        yield return new WaitUntil(() => !SelectPopUpManager.instance.isSelect);
+
+        if (SelectPopUpManager.instance.sign)
+        {
+            action();
         }
     }
 }
