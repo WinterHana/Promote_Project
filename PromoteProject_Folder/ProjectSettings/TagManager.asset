@@ -10,6 +10,7 @@ TagManager:
   - HPCanvas
   - SelectPopUp
   - MapSelect
+  - Enemy
   layers:
   - Default
   - TransparentFX

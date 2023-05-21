@@ -2075,6 +2075,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3748786171881270788, guid: 01df28a28153f8046be139a610e8e846, type: 3}
+      propertyPath: atkSpeed
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01df28a28153f8046be139a610e8e846, type: 3}
 --- !u!1001 &452839463
@@ -3178,7 +3182,7 @@ GameObject:
   - component: {fileID: 1944795867}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

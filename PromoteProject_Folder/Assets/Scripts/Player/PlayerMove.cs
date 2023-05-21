@@ -28,6 +28,12 @@ public class PlayerMove : MonoBehaviour
     [Header("플레이어 움직임 여부")]
     public static bool isMove;      // 많이 쓸 거 같아서 static으로 만듬
 
+    [Header("공격 관련 스탯 정리")]
+    int atkDmg;                         // 공격 대미지
+    [SerializeField] float atkSpeed;    // 공격 간격
+    float curTime;                      // 간격 시간 저장
+    public bool isAttacked;                    // 공격한 여부
+
     Rigidbody2D rigid;
     Animator ani;
     CapsuleCollider2D standCol;
@@ -64,6 +70,9 @@ public class PlayerMove : MonoBehaviour
         walkSpeed = maxSpeed;
 
         isMove = true;
+
+        // 공격 대미지 설정
+        atkDmg = PlayerStat.instance.atkDamege;
     }
     
     void Update()
@@ -73,6 +82,7 @@ public class PlayerMove : MonoBehaviour
             jump();
             sit();
             ladder();
+            attack();
             // 키보드에서 손을 땠을 때 완전 멈추기
             if (Input.GetButtonUp("Horizontal"))
             {
@@ -210,6 +220,24 @@ public class PlayerMove : MonoBehaviour
                     // Debug.Log(rayHit.collider.name);
                 }
             }
+        }
+    }
+
+    void attack()
+    {
+        if (curTime <= 0)
+        {
+            isAttacked = true;
+            if (!isJump && !isLadder && !isJump && Input.GetButtonDown("Attack"))
+            {
+                ani.SetTrigger("attack");
+                curTime = atkSpeed;
+                isAttacked = false;
+            }
+        }
+        else
+        {
+            curTime -= Time.deltaTime;
         }
     }
 }
