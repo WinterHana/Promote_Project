@@ -230,7 +230,6 @@ public class PlayerMove : MonoBehaviour
             isAttacked = true;
             if (!isJump && !isLadder && !isJump && Input.GetButtonDown("Attack"))
             {
-                ani.SetTrigger("attack");
                 curTime = atkSpeed;
                 isAttacked = false;
             }

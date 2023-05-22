@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 기본적인 움직임 생성
 // 컴포넌트가 없으면 자동으로 추가
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CircleCollider2D))]
@@ -18,21 +19,18 @@ public class EnemyMove : MonoBehaviour
 
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
-    CircleCollider2D circle;
     Animator anim;
-    protected int nextMove; // 행동지표를 결정할 변수
+    public int nextMove; // 행동지표를 결정할 변수
+    public bool isMove;
 
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
-        circle = GetComponent<CircleCollider2D>();
-        rigid.freezeRotation = true;
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-
         Invoke("Think", 1.5f);     // 1.5초마다 Think 함수 실행
+        isMove = true;
     }
-
     private void Start()
     {
         currentSpeed = wanderSpeed;
@@ -46,7 +44,7 @@ public class EnemyMove : MonoBehaviour
     void Think()
     {
         nextMove = Random.Range(-1, 2);                     // -1이면 왼쪽, 0이면 멈추기, 1이면 오른쪽으로 이동
-        Debug.Log(nextMove);
+
         anim.SetInteger("isWalking", nextMove);             // 0이면 멈춘 애니, 아니면 움직인 애니
         
         if (nextMove != 0)
@@ -54,9 +52,9 @@ public class EnemyMove : MonoBehaviour
             spriteRenderer.flipX = (nextMove == -1);        // 처음에 오른쪽을 보고 시작, 왼쪽으로 이동 시 전환
         }
 
-        float nextThinkTime = Random.Range(1f, 2f);
+        float nextThinkTime = Random.Range(1f, 2f);         // 랜덤한 수마다 다시 실행하기
 
-        Invoke("Think", nextThinkTime);                     // 5초마다 Think 함수 실행 by 재귀함수
+        Invoke("Think", nextThinkTime);
     }
 
     void move()
@@ -79,29 +77,6 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player") && followPlayer)
-        {
-            currentSpeed = pursuitSpeed;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            currentSpeed = wanderSpeed;
-        }
-    }
-
-    private void OnDrawGizmos()
-    {
-        if (circle != null)
-        {
-            Gizmos.DrawWireSphere(transform.position, circle.radius);
-        }
-    }
 
     IEnumerator TurnDelay()
     {
@@ -111,4 +86,14 @@ public class EnemyMove : MonoBehaviour
         Invoke("Think", 2.0f);
         yield return new WaitForSeconds(0.5f);
     }
+
+    public void stun() {
+        CancelInvoke();
+
+        nextMove = 0;
+        anim.SetInteger("isWalking", nextMove);
+
+        Invoke("Think", 3.0f);
+    }
 }
+
