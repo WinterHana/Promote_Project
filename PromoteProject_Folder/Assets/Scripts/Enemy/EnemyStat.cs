@@ -78,6 +78,7 @@ public class EnemyStat : MonoBehaviour
     IEnumerator deadDelay()
     {
         yield return new WaitForSeconds(1.0f);
+        PlayerStat.instance.exp += 10;
         Destroy(hpBar.gameObject);
         Destroy(gameObject);
     }

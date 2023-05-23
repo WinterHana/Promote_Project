@@ -27,6 +27,7 @@ public class EnemySight : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && enemyMove.followPlayer)
         {
             enemyMove.currentSpeed = enemyMove.pursuitSpeed;
+            enemyMove.isPursuit = true;
         }
     }
 
@@ -35,6 +36,7 @@ public class EnemySight : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             enemyMove.currentSpeed = enemyMove.wanderSpeed;
+            enemyMove.isPursuit = false;
         }
     }
 }

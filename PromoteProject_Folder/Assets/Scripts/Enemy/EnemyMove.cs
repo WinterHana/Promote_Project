@@ -20,48 +20,97 @@ public class EnemyMove : MonoBehaviour
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
     Animator anim;
-    public int nextMove; // 행동지표를 결정할 변수
-    public bool isMove;
+    Transform target;
 
+    [Header("각종 움직임 관련 변수")]
+    public int nextMove;    // 행동지표를 결정할 변수
+    public bool isMove;     // 움직일 수 있는지에 대한 여부
+    public bool isPursuit;
+
+    [Header("공격 관련 변수")]
+    public float distance;
+    public LayerMask isLayer;
+    public float atkDistance;
+    public GameObject bullet;
+    public float cooltime;
+    float currentTime;
+    bool watching;
+    float dir;
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        Invoke("Think", 1.5f);     // 1.5초마다 Think 함수 실행
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+        
         isMove = true;
+        isPursuit = false;
     }
     private void Start()
     {
+        Invoke("Think", 1f);
         currentSpeed = wanderSpeed;
     }
 
     void FixedUpdate()
     {
-        move();
+        RaycastHit2D raycast = Physics2D.Raycast(transform.position, transform.right * dir, distance, isLayer);
+        if (raycast.collider != null)
+        {
+            if (Vector2.Distance(transform.position, raycast.collider.transform.position) < atkDistance)
+            {
+                if (currentTime <= 0)
+                {
+                    GameObject bulletcopy = Instantiate(bullet);
+                    bulletcopy.transform.position = new Vector2(transform.position.x, transform.position.y);
+                    Debug.Log(bulletcopy.transform.position);
+                    currentTime = cooltime;
+                }
+            }
+        }
+        else
+        {
+            // 움직일 수 있을 때만 움직인다.
+            if (isMove) move();
+        }
+        currentTime -= Time.deltaTime;
     }
 
     void Think()
     {
-        nextMove = Random.Range(-1, 2);                     // -1이면 왼쪽, 0이면 멈추기, 1이면 오른쪽으로 이동
-
-        anim.SetInteger("isWalking", nextMove);             // 0이면 멈춘 애니, 아니면 움직인 애니
-        
-        if (nextMove != 0)
-        {
-            spriteRenderer.flipX = (nextMove == -1);        // 처음에 오른쪽을 보고 시작, 왼쪽으로 이동 시 전환
+        isMove = true;                                          // 생각 중이면 항상 움직일 수 있어야 한다.
+        // 배회 모드일 때만 정상적으로 작동한다.
+        spriteRenderer.color = new Color(1, 1, 1, 1f);
+        if (!isPursuit) {
+            nextMove = Random.Range(-1, 2);                     // -1이면 왼쪽, 0이면 멈추기, 1이면 오른쪽으로 이동
+            anim.SetInteger("isWalking", nextMove);             // 0이면 멈춘 애니, 아니면 움직인 애니
+            if (nextMove != 0)
+            {
+                spriteRenderer.flipX = (nextMove == -1);        // 처음에 오른쪽을 보고 시작, 왼쪽으로 이동 시 전환
+            }
         }
-
-        float nextThinkTime = Random.Range(1f, 2f);         // 랜덤한 수마다 다시 실행하기
+        float nextThinkTime = Random.Range(1f, 2f);             // 랜덤한 수마다 다시 실행하기
 
         Invoke("Think", nextThinkTime);
     }
 
     void move()
     {
-        // 한 방향으로 움직임
-        rigid.velocity = new Vector2(nextMove * currentSpeed, rigid.velocity.y);
+        // 추적 모드
+        if (isPursuit) {
+            anim.SetBool("isRun", true);
+            dir = (target.position.x - transform.position.x < 0) ? -1 : 1;
+            watching = (dir == -1) ? true : false;
+            spriteRenderer.flipX = watching;
+            rigid.velocity = new Vector2(dir * currentSpeed, rigid.velocity.y);
+        }
 
+        // 배회 모드
+        else {
+            anim.SetBool("isRun", false);
+            rigid.velocity = new Vector2(nextMove * currentSpeed, rigid.velocity.y);
+        }
+        
         // 플렛폼(발판) 아래 확인
         Vector2 frontVec = new Vector2(rigid.position.x + nextMove, rigid.position.y);
         RaycastHit2D rayHitDown = Physics2D.Raycast(frontVec, Vector2.down, 1.5f, LayerMask.GetMask("tiles"));
@@ -77,7 +126,6 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-
     IEnumerator TurnDelay()
     {
         nextMove = nextMove * (-1);
@@ -87,13 +135,21 @@ public class EnemyMove : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
     }
 
-    public void stun() {
-        CancelInvoke();
 
+    // 스턴을 거는 함수
+    public void stun() {
+        // Think 전부 멈추기
+        CancelInvoke(); 
+        spriteRenderer.color = new Color(1, 1, 1, 0.4f);
+        // 움직임 정지
+        isMove = false;
         nextMove = 0;
+        anim.SetBool("isRun", false);
         anim.SetInteger("isWalking", nextMove);
 
         Invoke("Think", 3.0f);
     }
+
+
 }
 

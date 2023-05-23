@@ -5,7 +5,6 @@ using UnityEngine;
 public class BoomController : MonoBehaviour
 {
     EnemyStat stat;
-    public float pushForce = 1000000f;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -14,7 +13,7 @@ public class BoomController : MonoBehaviour
             stat = collision.GetComponent<EnemyStat>();
             EnemyMove enemyMove = collision.gameObject.GetComponent<EnemyMove>();
 
-            stat.attacked(40);
+            stat.attacked(PlayerStat.instance.atkDamege);
 
             enemyMove.stun();
 

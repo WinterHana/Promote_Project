@@ -166,7 +166,8 @@ MonoBehaviour:
   whatIsLadder:
     serializedVersion: 2
     m_Bits: 512
-  atkSpeed: 1
+  prfBoom: {fileID: 6677023795052232490, guid: 47271f5fddc829d4c9704071c3bd4d76, type: 3}
+  atkSpeed: 5
   isAttacked: 0
 --- !u!114 &3748786171881270798
 MonoBehaviour:

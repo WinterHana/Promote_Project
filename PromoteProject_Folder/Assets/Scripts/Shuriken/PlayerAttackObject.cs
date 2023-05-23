@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class PlayerAttackObject : MonoBehaviour
 {
-    [SerializeField] float damege;
-    [SerializeField] PlayerHPController playerHP;
+    [SerializeField] float damage;
+    protected bool isAttack;
 
     protected virtual void Start()
     {
-        playerHP = GameObject.FindGameObjectWithTag("HPCanvas").GetComponent<PlayerHPController>();
+        isAttack = true;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            playerHP.Hphealth.MyCurrentValue -= damege;
-            PlayerStat.instance.health -= damege;
+            if (isAttack) {
+                PlayerMove player = collision.GetComponent<PlayerMove>();
+                player.OnDamaged(damage, gameObject.transform);
+            }
         }
     }
 }

@@ -29,21 +29,25 @@ public class PlayerMove : MonoBehaviour
     public static bool isMove;      // 많이 쓸 거 같아서 static으로 만듬
 
     [Header("공격 관련 스탯 정리")]
+    public GameObject prfBoom;
     int atkDmg;                         // 공격 대미지
     [SerializeField] float atkSpeed;    // 공격 간격
     float curTime;                      // 간격 시간 저장
-    public bool isAttacked;                    // 공격한 여부
+    public bool isAttacked;             // 공격한 여부
 
     Rigidbody2D rigid;
     Animator ani;
     CapsuleCollider2D standCol;
     BoxCollider2D boxCol;
     GameObject ground;
-    
+    SpriteRenderer spriteRenderer;
+    PlayerHPController playerHP;
+
     bool isJump;            // 점프 상태인지 확인
     bool isSit;             // 앉은 상태인지 확인
     bool isLadder;          // 사다리 상태인지 확인
     bool findLadder;        // 레이케스트가 사다리를 찾았음
+    bool isDamage;          // 공격 당했는지에 대한 여부를 알려준다.
     float inputHorizontal;
     float inputVertical;
 
@@ -53,6 +57,8 @@ public class PlayerMove : MonoBehaviour
         ani = GetComponent<Animator>();
         standCol = GetComponent<CapsuleCollider2D>();
         boxCol = GetComponent<BoxCollider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        playerHP = GameObject.FindGameObjectWithTag("HPCanvas").GetComponent<PlayerHPController>();
         ground = transform.GetChild(0).gameObject;
         // 오브젝트가 구르는 현상 방지
         rigid.freezeRotation = true;
@@ -61,6 +67,7 @@ public class PlayerMove : MonoBehaviour
         isJump = false;
         isSit = false;
         isLadder = false;
+        isDamage = false;
         findLadder = false;
 
         // 콜라이더가 2개인데, 서 있을 때는 캡슐, 앉을 때는 박스로 한다.
@@ -86,6 +93,7 @@ public class PlayerMove : MonoBehaviour
             // 키보드에서 손을 땠을 때 완전 멈추기
             if (Input.GetButtonUp("Horizontal"))
             {
+
                 rigid.velocity = new Vector2(rigid.velocity.normalized.x * 0.5f, rigid.velocity.y);
             }
         }
@@ -98,7 +106,7 @@ public class PlayerMove : MonoBehaviour
             move();
             notJump();
         }
-
+        die();
     }
 
     // 좌우로 움직임
@@ -209,7 +217,7 @@ public class PlayerMove : MonoBehaviour
             // 레이케스트 그리기
             Debug.DrawRay(rigid.position, Vector2.down * 2, new Color(1, 0, 0));
 
-            RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 2, LayerMask.GetMask("tiles"));
+            RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 2, LayerMask.GetMask("tiles", "enemy"));
 
             if (rayHit.collider != null)
             {
@@ -230,13 +238,62 @@ public class PlayerMove : MonoBehaviour
             isAttacked = true;
             if (!isJump && !isLadder && !isJump && Input.GetButtonDown("Attack"))
             {
-                curTime = atkSpeed;
+                GameObject boom = Instantiate(prfBoom) as GameObject;
+                boom.transform.position = new Vector2(ground.transform.position.x, ground.transform.position.y + 0.4f);
                 isAttacked = false;
+                curTime = atkSpeed;
             }
         }
         else
         {
             curTime -= Time.deltaTime;
+        }
+    }
+
+    // 피격 당했을 때
+    public void OnDamaged(float damage, Transform tr)
+    {
+        Vector2 attackedVelocity = Vector2.zero;
+
+        if (!isDamage) {
+            playerHP.Hphealth.MyCurrentValue -= damage;
+            PlayerStat.instance.health -= damage;
+            isDamage = true;
+
+            if (tr.position.x > transform.position.x)
+                attackedVelocity = new Vector2(-5f, 5f);
+            else
+                attackedVelocity = new Vector2(5f, 5f);
+
+            spriteRenderer.color = new Color(1, 1, 1, 0.4f);
+            ani.SetTrigger("attacked");
+
+            isMove = false;
+            rigid.AddForce(attackedVelocity, ForceMode2D.Impulse);
+
+            Invoke("OffDamaged", 2f);
+            Invoke("canMove", 0.5f);
+        }
+    }
+
+    // 피격 후 원상복귀 관련 함수
+    void canMove()
+    {
+        isMove = true;
+    }
+
+    void OffDamaged()
+    {
+        spriteRenderer.color = new Color(1, 1, 1, 1);
+        isDamage = false;
+    }
+
+    void die()
+    {
+        if (PlayerStat.instance.health <= 0)
+        {
+            ani.SetBool("die", true);
+            isMove = false;
         }
     }
 }
