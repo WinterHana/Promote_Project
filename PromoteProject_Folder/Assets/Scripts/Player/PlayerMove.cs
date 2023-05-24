@@ -215,13 +215,12 @@ public class PlayerMove : MonoBehaviour
         if (rigid.velocity.y < 0)
         {
             // 레이케스트 그리기
-            Debug.DrawRay(rigid.position, Vector2.down * 2, new Color(1, 0, 0));
-
-            RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 2, LayerMask.GetMask("tiles", "enemy"));
+            RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 1.5f, LayerMask.GetMask("tiles", "enemy"));
+            Debug.DrawRay(rigid.position, Vector2.down * 1.5f, new Color(1, 0, 0));
 
             if (rayHit.collider != null)
             {
-                if (rayHit.distance < 3.0f)
+                if (rayHit.distance < 1.5f)
                 {
                     ani.SetBool("jumping", false);
                     isJump = false; 

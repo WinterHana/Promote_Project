@@ -11,6 +11,8 @@ TagManager:
   - SelectPopUp
   - MapSelect
   - Enemy
+  - Tile
+  - Door
   layers:
   - Default
   - TransparentFX

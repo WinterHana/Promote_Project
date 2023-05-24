@@ -35,6 +35,6 @@ public class Bullet : PlayerAttackObject
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
-        if(collision.CompareTag("Player")) DestroyBullet();
+        if(collision.CompareTag("Player") || collision.CompareTag("Door") || collision.CompareTag("Tile")) DestroyBullet();
     }
 }

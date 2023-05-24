@@ -123,7 +123,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -186,18 +186,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13e9559ea50f4e14681273f7cd78782a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pursuitSpeed: 5
+  pursuitSpeed: 3
   wanderSpeed: 2
   currentSpeed: 0
   followPlayer: 1
   nextMove: 0
   isMove: 0
+  isAttack: 0
   isPursuit: 0
-  distance: 10
+  distance: 5
   isLayer:
     serializedVersion: 2
     m_Bits: 128
-  atkDistance: 10
+  atkDistance: 5
   bullet: {fileID: 4369663305319581955, guid: 984405fe637e5054fac660fb2d752603, type: 3}
   cooltime: 3
 --- !u!114 &4803821856158176815
@@ -232,7 +233,7 @@ GameObject:
   - component: {fileID: 4803821856967138687}
   - component: {fileID: 4803821856967138685}
   - component: {fileID: 4803821856967138686}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Sight
   m_TagString: Untagged
   m_Icon: {fileID: 0}

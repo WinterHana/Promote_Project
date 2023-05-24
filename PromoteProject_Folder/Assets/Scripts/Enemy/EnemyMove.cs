@@ -25,6 +25,7 @@ public class EnemyMove : MonoBehaviour
     [Header("각종 움직임 관련 변수")]
     public int nextMove;    // 행동지표를 결정할 변수
     public bool isMove;     // 움직일 수 있는지에 대한 여부
+    public bool isAttack;   // 공격할 수 있는지에 대한 여부
     public bool isPursuit;
 
     [Header("공격 관련 변수")]
@@ -45,6 +46,7 @@ public class EnemyMove : MonoBehaviour
         
         isMove = true;
         isPursuit = false;
+        isAttack = true;
     }
     private void Start()
     {
@@ -54,31 +56,16 @@ public class EnemyMove : MonoBehaviour
 
     void FixedUpdate()
     {
-        RaycastHit2D raycast = Physics2D.Raycast(transform.position, transform.right * dir, distance, isLayer);
-        if (raycast.collider != null)
-        {
-            if (Vector2.Distance(transform.position, raycast.collider.transform.position) < atkDistance)
-            {
-                if (currentTime <= 0)
-                {
-                    GameObject bulletcopy = Instantiate(bullet);
-                    bulletcopy.transform.position = new Vector2(transform.position.x, transform.position.y);
-                    Debug.Log(bulletcopy.transform.position);
-                    currentTime = cooltime;
-                }
-            }
-        }
-        else
-        {
-            // 움직일 수 있을 때만 움직인다.
-            if (isMove) move();
-        }
-        currentTime -= Time.deltaTime;
+        // 움직일 수 있을 때만 움직인다.
+        if (isMove) move();
+
+        // 공격할 수 있을 때만 공격한다.
+        if (isAttack) attack();
     }
 
     void Think()
     {
-        isMove = true;                                          // 생각 중이면 항상 움직일 수 있어야 한다.
+        isMove = true; isAttack = true;                         // 생각 중이면 항상 움직일 수 있어야 한다.
         // 배회 모드일 때만 정상적으로 작동한다.
         spriteRenderer.color = new Color(1, 1, 1, 1f);
         if (!isPursuit) {
@@ -141,15 +128,48 @@ public class EnemyMove : MonoBehaviour
         // Think 전부 멈추기
         CancelInvoke(); 
         spriteRenderer.color = new Color(1, 1, 1, 0.4f);
+
         // 움직임 정지
         isMove = false;
+        isAttack = false;
         nextMove = 0;
+
+        // 애니매이션 Idle로 바꾸기
         anim.SetBool("isRun", false);
+        anim.SetBool("isAttack", false);
         anim.SetInteger("isWalking", nextMove);
 
         Invoke("Think", 3.0f);
     }
 
+    void attack()
+    {
+        // 공격 관련 기능
+        RaycastHit2D raycast = Physics2D.Raycast(transform.position, transform.right * dir, distance, isLayer);
+        Debug.DrawRay(transform.position, transform.right * dir * distance, new Color(255, 255, 0));
 
+        if (raycast.collider != null)
+        {
+            if (Vector2.Distance(transform.position, raycast.collider.transform.position) < atkDistance)
+            {
+                anim.SetBool("isAttack", true);
+                isMove = false;
+                Debug.Log("거리 확인");
+                if (currentTime <= 0)
+                {
+                    Debug.Log("총 발사");
+                    GameObject bulletcopy = Instantiate(bullet);
+                    bulletcopy.transform.position = new Vector2(transform.position.x, transform.position.y);
+                    currentTime = cooltime;
+                }
+            }
+        }
+        else
+        {
+            isMove = true;
+            anim.SetBool("isAttack", false);
+        }
+        currentTime -= Time.deltaTime;
+    }
 }
 
