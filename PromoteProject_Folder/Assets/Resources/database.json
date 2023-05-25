@@ -1,13 +1,13 @@
 {
     "exp": 0,
-    "money": 13010000,
+    "money": 26020000,
     "maxMoney": 1000000000,
-    "endurance": 7,
-    "strength": 3,
-    "intelligence": 1,
-    "atkDamege": 25,
-    "health": 140.0,
-    "maxHealth": 170.0,
-    "working": 9890.0,
+    "endurance": 42,
+    "strength": 4,
+    "intelligence": 3,
+    "atkDamege": 30,
+    "health": 0.0,
+    "maxHealth": 520.0,
+    "working": 9510.0,
     "maxWorking": 10000.0
 }
