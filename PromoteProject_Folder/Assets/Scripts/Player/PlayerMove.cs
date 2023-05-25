@@ -77,11 +77,13 @@ public class PlayerMove : MonoBehaviour
         walkSpeed = maxSpeed;
 
         isMove = true;
+    }
 
+    private void Start()
+    {
         // 공격 대미지 설정
         atkDmg = PlayerStat.instance.atkDamege;
     }
-    
     void Update()
     {
         if (isMove) 

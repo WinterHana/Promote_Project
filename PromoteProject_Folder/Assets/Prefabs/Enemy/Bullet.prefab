@@ -147,8 +147,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
-  speed: 10
+  speed: 20
   distance: 0.5
   isLayer:
     serializedVersion: 2
     m_Bits: 0
+  dir: 0
+  isEnemy: 1
