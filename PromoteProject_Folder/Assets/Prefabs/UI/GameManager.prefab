@@ -46,6 +46,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeManager: {fileID: 0}
   dataManager: {fileID: 0}
-  setTimeEasy: 0
-  setTimeMedium: 0
-  setTimeHard: 0
+  setTimeEasy: 100
+  setTimeMedium: 100
+  setTimeHard: 100
+  stageClaer: 0
+  isReward: 0
+  difficulty: 0
+  step: 0

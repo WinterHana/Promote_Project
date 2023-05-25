@@ -19,7 +19,7 @@ public class DialogueParser : MonoBehaviour
         result = new Dialogue[jsonData.Count];                           // 결과 리스트
         lines = new List<string>();                                      // 임시 대화 내용 리스트
 
-        Debug.Log(result.Length);
+        // Debug.Log(result.Length);
 
         for (int i = 0; i < jsonData.Count; i++) {
             result[i] = new Dialogue();

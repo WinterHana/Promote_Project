@@ -10,6 +10,9 @@ TagManager:
   - HPCanvas
   - SelectPopUp
   - MapSelect
+  - Enemy
+  - Tile
+  - Door
   layers:
   - Default
   - TransparentFX

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class TileController : MonoBehaviour
 {
+    [SerializeField] bool init;
     Tilemap map;
     TilemapCollider2D col;
     bool spwn;
@@ -13,12 +14,22 @@ public class TileController : MonoBehaviour
     {
         map = GetComponent<Tilemap>();
         col = GetComponent<TilemapCollider2D>();
-
-        col.enabled = false;
-        Color c = map.color;
-        c.a = 0;
-        map.color = c;
-        spwn = false;
+        if (init)
+        {
+            col.enabled = true;
+            Color c = map.color;
+            c.a = 1;
+            map.color = c;
+            spwn = true;
+        }
+        else 
+        {
+            col.enabled = false;
+            Color c = map.color;
+            c.a = 0;
+            map.color = c;
+            spwn = false;
+        }
     }
 
     IEnumerator FadeIn()
