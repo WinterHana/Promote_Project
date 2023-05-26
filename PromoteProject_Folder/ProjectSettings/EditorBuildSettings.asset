@@ -15,9 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/LoadingScene.unity
     guid: c635a338ec6b727419d52006aa4ba212
   - enabled: 1
-    path: Assets/Scenes/SelectPractice.unity
-    guid: 902ccf2a0da00ac4f85dc99cbe93438a
+    path: Assets/Scenes/BankHard.unity
+    guid: c27c9f79fbda40d4cb769baaeab7a051
   - enabled: 1
-    path: Assets/Scenes/SelectBank.unity
-    guid: 380db7152da89a04ea44a49aba05aa0c
+    path: Assets/Scenes/BankMiddle.unity
+    guid: af3d90b8bfc319c4aa4ed263ee370579
   m_configObjects: {}

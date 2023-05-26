@@ -102,6 +102,20 @@ public class GameManager : MonoBehaviour
             TimeManager.instance.isStartTimeAttack();
             TimeManager.instance.setReminingTime(setTimeEasy);
         }
+        else if (sceneNum == (int)BankScene.Medium_Step1)
+        {
+            difficulty = Difficulty.Medium;
+            step = Step.step1;
+            TimeManager.instance.isStartTimeAttack();
+            TimeManager.instance.setReminingTime(setTimeMedium);
+        }
+        else if (sceneNum == (int)BankScene.Hard_Step1)
+        {
+            difficulty = Difficulty.Hard;
+            step = Step.step1;
+            TimeManager.instance.isStartTimeAttack();
+            TimeManager.instance.setReminingTime(setTimeHard);
+        }
         else {
             TimeManager.instance.isEndTimeAttack();
         }

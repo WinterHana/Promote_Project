@@ -370,11 +370,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3748786171881270785, guid: 01df28a28153f8046be139a610e8e846, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9
+      value: -13
       objectReference: {fileID: 0}
     - target: {fileID: 3748786171881270785, guid: 01df28a28153f8046be139a610e8e846, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3748786171881270785, guid: 01df28a28153f8046be139a610e8e846, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2119,6 +2119,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6492989555972415842, guid: fc7c58ab1e1684145a19b1386a3df8cd, type: 3}
+      propertyPath: nextScene
+      value: BankMiddle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6492989555972415842, guid: fc7c58ab1e1684145a19b1386a3df8cd, type: 3}
+      propertyPath: dialogueNum
+      value: 2002
+      objectReference: {fileID: 0}
     - target: {fileID: 6492989555972415844, guid: fc7c58ab1e1684145a19b1386a3df8cd, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -2170,6 +2178,10 @@ PrefabInstance:
     - target: {fileID: 6492989555972415849, guid: fc7c58ab1e1684145a19b1386a3df8cd, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6492989555972415849, guid: fc7c58ab1e1684145a19b1386a3df8cd, type: 3}
+      propertyPath: m_TagString
+      value: MapSelect
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc7c58ab1e1684145a19b1386a3df8cd, type: 3}

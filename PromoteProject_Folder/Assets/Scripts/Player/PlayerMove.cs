@@ -176,6 +176,7 @@ public class PlayerMove : MonoBehaviour
     // 사다리 타기
     void ladder()
     {
+
         // 사다리 타기 판정
         RaycastHit2D hitInfo = Physics2D.Raycast(ground.transform.position, Vector2.up, rcDistance, whatIsLadder);
         Debug.DrawRay(ground.transform.position, Vector2.up * rcDistance, new Color(0, 1, 0));
@@ -217,8 +218,10 @@ public class PlayerMove : MonoBehaviour
         if (rigid.velocity.y < 0)
         {
             // 레이케스트 그리기
-            RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 1.5f, LayerMask.GetMask("tiles", "enemy"));
-            Debug.DrawRay(rigid.position, Vector2.down * 1.5f, new Color(1, 0, 0));
+            inputHorizontal = Input.GetAxisRaw("Horizontal");
+            Vector2 pos = new Vector2(rigid.position.x + 0.7f * inputHorizontal, rigid.position.y);
+            RaycastHit2D rayHit = Physics2D.Raycast(pos, Vector3.down, 2.0f, LayerMask.GetMask("tiles", "enemy"));
+            Debug.DrawRay(pos, Vector2.down * 2.0f, new Color(1, 0, 0));
 
             if (rayHit.collider != null)
             {
