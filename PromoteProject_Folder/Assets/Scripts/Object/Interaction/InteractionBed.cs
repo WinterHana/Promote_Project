@@ -4,8 +4,40 @@ using UnityEngine;
 
 public class InteractionBed : InteractionObject
 {
+    [SerializeField] int id;
+    [SerializeField] FadeInOutController controller;            // FadeInOutCanvas 넣기
+    delegate void Action();
+
+    private void Start()
+    {
+        Action action = changeTime;
+    }
+
     public override void Interaction()
     {
+        if (PlayerStat.instance.times % 2 == 0) id = 3002;          // 낮일 때, 밤을 맞이해야한다.
+        else if (PlayerStat.instance.times % 2 == 1) id = 3001;     // 밤일 때, 낮을 맞이해야한다.
+
+        SelectPopUpManager.instance.OpenPopUp(id);
+
+        StartCoroutine(SelectCoroutine(changeTime));
+    }
+
+    void changeTime()
+    {
         GameManager.instance.TodayChange();
+        controller.ChangeDayAnim();
+        PlayerStat.instance.health += 50;       // 침대에서 전환하면 체력 일부 전환
+        if (PlayerStat.instance.health > PlayerStat.instance.maxHealth) PlayerStat.instance.health = PlayerStat.instance.maxHealth;
+    }
+
+    IEnumerator SelectCoroutine(Action action)
+    {
+        yield return new WaitUntil(() => !SelectPopUpManager.instance.isSelect);
+
+        if (SelectPopUpManager.instance.sign)
+        {
+            action();
+        }
     }
 }

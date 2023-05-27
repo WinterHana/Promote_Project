@@ -53,13 +53,14 @@ public class DialogManager : MonoBehaviour
     // 대화 상호작용을 관여함
     bool Talk(int objID, int dialogueID)
     {
-        talkName.text = talkManager[objID].GetName(objID);
+        talkName.text = talkManager[objID].GetName(dialogueID);
         string talkData = talkManager[objID].GetDialouge(dialogueID, talkIndex);
         Debug.Log(talkData);
         // 대화 끝
         if (talkData == null) {
             isAction = false;
             talkIndex = 0;
+            if (PlayerStat.instance.dialogue <= PlayerStat.instance.times) PlayerStat.instance.dialogue++;
             return true;
         }
 

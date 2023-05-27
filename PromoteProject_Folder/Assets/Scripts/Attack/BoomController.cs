@@ -6,6 +6,11 @@ public class BoomController : MonoBehaviour
 {
     EnemyStat stat;
 
+    private void Start()
+    {
+        Invoke("DestroyBoom", 20f);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy"))
@@ -19,5 +24,9 @@ public class BoomController : MonoBehaviour
 
             Destroy(gameObject);
         }
+    }
+
+    void DestroyBoom() {
+        Destroy(gameObject);
     }
 }

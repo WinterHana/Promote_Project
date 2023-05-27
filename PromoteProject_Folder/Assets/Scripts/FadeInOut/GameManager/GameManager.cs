@@ -7,13 +7,13 @@ using UnityEngine.SceneManagement;
 // 난이도에 따른 맵 이동
 public enum BankScene
 {
-    Easy_Step1 = 1,
+    Easy_Step1 = 3,
+    Medium_Step1 = 4,
+    Hard_Step1 = 5,
     Easy_Step2 = 2,
     Easy_Step3 = 3,
-    Medium_Step1 = 4,
     Medium_Step2 = 5,
     Medium_Step3 = 6,
-    Hard_Step1 = 7,
     Hard_Step2 = 8,
     Hard_Step3 = 9
 }
@@ -68,14 +68,44 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        TodayCheck();
+    }
+
+    private void Update()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            Destroy(gameObject);
+        }
+    }
     // 낮밤을 바꿈
     public void TodayChange()
     {
-        if (!timeManager.isNight) {
+        PlayerStat.instance.times += 1;
+
+        // 짝수일 때는 낮, 홀수일 때는 밤이다.
+        if (PlayerStat.instance.times % 2 == 1) {
             timeManager.isNight = true;
         }
 
         else {
+            timeManager.isNight = false;
+        }
+    }
+
+    // 지금 시각을 체크해준다. -> start에 넣어준다.
+    void TodayCheck()
+    {
+        // 짝수일 때는 밤, 홀수일 때는 낮이다.
+        if (PlayerStat.instance.times % 2 == 1)
+        {
+            timeManager.isNight = true;
+        }
+
+        else
+        {
             timeManager.isNight = false;
         }
     }
@@ -133,7 +163,10 @@ public class GameManager : MonoBehaviour
 
     public int moneyRewird()
     {
-        int reward = 10000 + (int)difficulty * (3000000 * PlayerStat.instance.intelligence + 10000000 * (int)step);
+        int reward = (int)difficulty * 
+            (1000000 * PlayerStat.instance.intelligence 
+            + 100000 * (int) TimeManager.instance.setTime 
+            + 5000000 * (int)step);
         if (!isReward)
         {
             PlayerStat.instance.money += reward;

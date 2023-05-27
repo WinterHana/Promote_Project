@@ -246,7 +246,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fd82e3680a0c2c4aba91aaa66118b29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  diaManager: {fileID: 0}
   tiles: []
+  text: {fileID: 1324182941874927341, guid: 82ae7723051d6bd4ca16a62a07683667, type: 3}
 --- !u!114 &2798203667465922364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,4 +261,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebc8a01c1e62c4647959b265f98bd764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  diaManager: {fileID: 0}
   doors: []
+  text: {fileID: 1324182941874927341, guid: 82ae7723051d6bd4ca16a62a07683667, type: 3}

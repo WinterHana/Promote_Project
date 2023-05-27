@@ -30,10 +30,10 @@ public class PlayerMove : MonoBehaviour
 
     [Header("공격 관련 스탯 정리")]
     public GameObject prfBoom;
-    int atkDmg;                         // 공격 대미지
-    [SerializeField] float atkSpeed;    // 공격 간격
-    float curTime;                      // 간격 시간 저장
+    public float atkSpeed;              // 공격 간격
     public bool isAttacked;             // 공격한 여부
+    float curTime;                      // 간격 시간 저장
+    float atkDmg;
 
     Rigidbody2D rigid;
     Animator ani;
@@ -42,7 +42,7 @@ public class PlayerMove : MonoBehaviour
     GameObject ground;
     SpriteRenderer spriteRenderer;
     PlayerHPController playerHP;
-
+    AttackCoolTimeController atkCooltime;
     bool isJump;            // 점프 상태인지 확인
     bool isSit;             // 앉은 상태인지 확인
     bool isLadder;          // 사다리 상태인지 확인
@@ -50,7 +50,7 @@ public class PlayerMove : MonoBehaviour
     bool isDamage;          // 공격 당했는지에 대한 여부를 알려준다.
     float inputHorizontal;
     float inputVertical;
-
+    
     void Awake() 
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -59,6 +59,8 @@ public class PlayerMove : MonoBehaviour
         boxCol = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerHP = GameObject.FindGameObjectWithTag("HPCanvas").GetComponent<PlayerHPController>();
+        atkCooltime = GameObject.FindGameObjectWithTag("AttackCoolTime").GetComponent<AttackCoolTimeController>();
+
         ground = transform.GetChild(0).gameObject;
         // 오브젝트가 구르는 현상 방지
         rigid.freezeRotation = true;
@@ -77,6 +79,10 @@ public class PlayerMove : MonoBehaviour
         walkSpeed = maxSpeed;
 
         isMove = true;
+
+        // 공격 시간 초기화
+        curTime = atkSpeed;
+        atkCooltime.time_cooltime = atkSpeed;
     }
 
     private void Start()
@@ -244,6 +250,7 @@ public class PlayerMove : MonoBehaviour
             {
                 GameObject boom = Instantiate(prfBoom) as GameObject;
                 boom.transform.position = new Vector2(ground.transform.position.x, ground.transform.position.y + 0.4f);
+                atkCooltime.Trigger_Skill();
                 isAttacked = false;
                 curTime = atkSpeed;
             }

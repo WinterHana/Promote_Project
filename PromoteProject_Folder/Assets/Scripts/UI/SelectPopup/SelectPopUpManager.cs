@@ -64,7 +64,14 @@ public class SelectPopUpManager : MonoBehaviour
 
     private void Update()
     {
-        if (isSelect) panel.SetActive(true);
+        if (isSelect) {
+            panel.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                ClosePopUp();     // esc키 누르면 종료
+            }
+
+        } 
         else panel.SetActive(false);
     }
 

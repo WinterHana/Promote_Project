@@ -34,12 +34,16 @@ public class ClearPopUPManager : MonoBehaviour
         {
             gameOverPopUp();
         }
-        else if (GameManager.instance.stageClaer == true)   // 성공
+        else if (PlayerStat.instance.health <= 0)
+        {
+            gameOverPopUp();
+        }
+        else if (GameManager.instance.stageClaer == true)                   // 성공
         {
             stageClearPopUp();
             gameClear = true;
-        }   
-        else                                                // 그 외의 것
+        }
+        else                                                                // 그 외의 것
         {
             closePopUp();
         }
@@ -56,7 +60,12 @@ public class ClearPopUPManager : MonoBehaviour
         PlayerMove.isMove = false;
 
         // 아무 키나 누르면 홈타운으로 이동
-        if (Input.anyKeyDown && nextScene) GameManager.instance.goToHomeTown();
+        if (Input.anyKeyDown && nextScene) {
+            GameManager.instance.goToHomeTown();
+            PlayerStat.instance.times++;
+            PlayerStat.instance.working = PlayerStat.instance.maxWorking;       // 행동치 회복
+        }
+        
 
         // 보상 제공
         int reward = GameManager.instance.moneyRewird();
@@ -84,8 +93,13 @@ public class ClearPopUPManager : MonoBehaviour
         PlayerMove.isMove = false;
 
         // 아무 키나 누르면 홈타운으로 이동
-        if (Input.anyKeyDown && nextScene) GameManager.instance.goToHomeTown();
-
+        if (Input.anyKeyDown && nextScene) {
+            GameManager.instance.goToHomeTown();
+            if (PlayerStat.instance.health <= 0) PlayerStat.instance.health = PlayerStat.instance.maxHealth / 2;     // 죽으면 체력의 반 정도 회복
+            PlayerStat.instance.times++;
+            PlayerStat.instance.working = PlayerStat.instance.maxWorking;   // 행동치 회복 
+        }
+        
         Title.text = gameoverTitle;
 
         ClearTimeText.text =

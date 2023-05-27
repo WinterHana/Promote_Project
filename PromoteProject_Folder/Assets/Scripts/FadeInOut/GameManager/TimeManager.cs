@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TimeManager : MonoBehaviour
 {
@@ -34,7 +35,7 @@ public class TimeManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(this);
         }
-        else
+        else 
         {
             Destroy(gameObject);
         }
@@ -44,11 +45,16 @@ public class TimeManager : MonoBehaviour
     {
         TodayControl();
         TimeAttackStarter();
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
-
-    void TodayControl()
+    public void TodayControl()
     {
+        // È¦¼ö¸é ¹ã, ¾Æ´Ï¸é ³·
+        isNight = (PlayerStat.instance.times % 2 == 1) ? true : false;
         if (isNight)
         {
             sun.enabled = false;
