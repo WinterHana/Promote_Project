@@ -35,6 +35,12 @@ public class PlayerMove : MonoBehaviour
     float curTime;                      // 간격 시간 저장
     float atkDmg;
 
+    [Header("효과음 관련 에셋 정리")]
+    public AudioSource runSound;
+    public AudioSource jumpSound;
+    public AudioSource AttackSound;
+    public AudioSource AttackedSound;
+
     Rigidbody2D rigid;
     Animator ani;
     CapsuleCollider2D standCol;
@@ -48,6 +54,7 @@ public class PlayerMove : MonoBehaviour
     bool isLadder;          // 사다리 상태인지 확인
     bool findLadder;        // 레이케스트가 사다리를 찾았음
     bool isDamage;          // 공격 당했는지에 대한 여부를 알려준다.
+    bool isRun;
     float inputHorizontal;
     float inputVertical;
     
@@ -122,21 +129,28 @@ public class PlayerMove : MonoBehaviour
     {
         inputHorizontal = Input.GetAxisRaw("Horizontal");
         rigid.velocity = new Vector2(inputHorizontal * walkSpeed, rigid.velocity.y);
-
         if (rigid.velocity.x > 0)
         {
-            ani.SetBool("walking", true);
+            isRun = true;
+            ani.SetBool("walking", true); 
             transform.localScale = new Vector3(-playerSize, playerSize, 1);
         }
         else if (rigid.velocity.x < 0)
         {
+            isRun = true;
             ani.SetBool("walking", true);
             transform.localScale = new Vector3(playerSize, playerSize, 1);
         }
         else 
         {
+            isRun = false;
             ani.SetBool("walking", false);
         }
+
+        if (isRun && !isJump) {
+            if(!runSound.isPlaying )runSound.Play();
+        } 
+        else runSound.Stop();
     }
     // 점프
     void jump() 
@@ -144,6 +158,7 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isJump == false && isSit == false)
         {
             ani.SetBool("jumping", true);
+            jumpSound.Play();
             isJump = true;
             // 점프를 할 때 속도를 초기화해서 좀 더 게임적으로
             rigid.AddForce(new Vector2(0, jumpPower), ForceMode2D.Impulse);
@@ -250,6 +265,7 @@ public class PlayerMove : MonoBehaviour
             {
                 GameObject boom = Instantiate(prfBoom) as GameObject;
                 boom.transform.position = new Vector2(ground.transform.position.x, ground.transform.position.y + 0.4f);
+                AttackSound.Play();
                 atkCooltime.Trigger_Skill();
                 isAttacked = false;
                 curTime = atkSpeed;
@@ -267,6 +283,7 @@ public class PlayerMove : MonoBehaviour
         Vector2 attackedVelocity = Vector2.zero;
 
         if (!isDamage) {
+            AttackedSound.Play();
             playerHP.Hphealth.MyCurrentValue -= damage;
             PlayerStat.instance.health -= damage;
             isDamage = true;

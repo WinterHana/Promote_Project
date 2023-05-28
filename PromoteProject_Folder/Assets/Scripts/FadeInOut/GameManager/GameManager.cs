@@ -80,6 +80,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         TodayCheck();
+        Action[] action = { ResultGameOver, ResultGameOver };
         if (PlayerStat.instance.times >= checkClearTime) gameClearCheck();
     }
 
@@ -159,6 +160,14 @@ public class GameManager : MonoBehaviour
         else {
             TimeManager.instance.isEndTimeAttack();
         }
+
+        // HomeTown에 올 때마다 실행한다.
+        if ((SceneManager.GetActiveScene().buildIndex == 2))
+        {
+            isClear();
+            if(gameClear) gameClearCheck();
+            else if(PlayerStat.instance.times == checkClearTime) gameClearCheck();
+        }
     }
 
     void OnDisable()
@@ -174,9 +183,9 @@ public class GameManager : MonoBehaviour
     public int moneyRewird()
     {
         int reward = (int)difficulty * 
-            (1000000 * PlayerStat.instance.intelligence 
+            (500000 * PlayerStat.instance.intelligence 
             + 100000 * (int) TimeManager.instance.setTime 
-            + 5000000 * (int)step);
+            + 3000000 * (int)step);
         if (!isReward)
         {
             PlayerStat.instance.money += reward;
@@ -189,16 +198,12 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Checking...");
         // 게임 클리어!
-        if (PlayerStat.instance.money >= PlayerStat.instance.maxMoney)
+        if (gameClear)
         {
-            gameClear = true;
-            SelectPopUpManager.instance.OpenPopUp(1);
             StartCoroutine(SelectCoroutine(ResultGameClear));
         }
         // 게임 오버...
         else {
-            gameClear = false;
-            SelectPopUpManager.instance.OpenPopUp(0);
             StartCoroutine(SelectCoroutine(ResultGameOver));
         }
         
@@ -214,11 +219,31 @@ public class GameManager : MonoBehaviour
         LoadingSceneController.LoadScene("Ending");
     }
 
+
     // 어느 선택이든 엔딩 직행
     IEnumerator SelectCoroutine(Action action)
     {
+        // 잠시 기다렸다가...
+        yield return new WaitForSeconds(0.5f);
+
+        // 팝업 띄우기
+        if(gameClear) SelectPopUpManager.instance.OpenPopUp(1);
+        else SelectPopUpManager.instance.OpenPopUp(0);
+        Debug.Log(SelectPopUpManager.instance.isSelect);
+
+        // 팝업 없어지면 작동
         yield return new WaitUntil(() => !SelectPopUpManager.instance.isSelect);
         action();
+    }
+
+    // 게임 클리어 확인용 함수
+    public void isClear()
+    {
+        // 돈을 모았다면 클리어 true로 하기
+        if (PlayerStat.instance.money >= PlayerStat.instance.maxMoney)
+        {
+            gameClear = true;
+        }
     }
 }
 

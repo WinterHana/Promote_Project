@@ -45,7 +45,11 @@ public class InteractionPartTime : InteractionObject
     {
         GameManager.instance.TodayChange();
         PlayerStat.instance.money += 3000000;       // 돈 증가
-        controller.ChangeDayAnim();
+        controller.ChangeDayAnim();                 // 시간 전환
+
+        // 클리어 여부 확인
+        GameManager.instance.isClear();
+        if (GameManager.instance.gameClear) GameManager.instance.gameClearCheck();
     }
 
     void changeEnding()

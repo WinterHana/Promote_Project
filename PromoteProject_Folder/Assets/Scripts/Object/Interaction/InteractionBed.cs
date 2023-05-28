@@ -38,6 +38,9 @@ public class InteractionBed : InteractionObject
         // 대화 수치 증가
         PlayerStat.instance.dialogue++;
 
+        // 클리어 여부 확인
+        GameManager.instance.isClear();
+        if (GameManager.instance.gameClear) GameManager.instance.gameClearCheck();
     }
 
     IEnumerator SelectCoroutine(Action action)

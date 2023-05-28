@@ -6,7 +6,8 @@ public class CheckGameClear : MonoBehaviour
 {
     private void Start()
     {
-        if (PlayerStat.instance.times >= GameManager.instance.checkClearTime)
+        if (PlayerStat.instance.times >= GameManager.instance.checkClearTime
+            || GameManager.instance.gameClear == true)
         {
             GameManager.instance.gameClearCheck();
         }

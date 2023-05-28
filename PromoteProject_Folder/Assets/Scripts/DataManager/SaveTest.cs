@@ -32,6 +32,7 @@ public class SaveTest : MonoBehaviour
 
     private void OnApplicationQuit()
     {
+        DataManager.instance.JsonLoad();
         DataManager.instance.JsonSave();
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using LitJson;
 using UnityEngine.SceneManagement;
 
 [System.Serializable]
@@ -43,11 +44,8 @@ public class SavePlayerStat {
 public class DataManager : MonoBehaviour
 {
     string path;
+    string path_origin;
     public static DataManager instance;
-
-    // 스탯에 따라 변동하는 수치는 따로 저장
-    float maxHealthSave;
-    int atkDamegeSave;
 
     public void Awake()
     {
@@ -61,19 +59,20 @@ public class DataManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        path = Path.Combine(Application.dataPath, "Resources/database.json");
+        path_origin = Path.Combine(Application.streamingAssetsPath, "database.json");
         JsonLoad();
+        // path = Path.Combine(Application.dataPath, "resources/database.json");
     }
 
     public void JsonLoad() {
-        
         // 기본적인 스탯 설정
-        if (!File.Exists(path))
+        if (!File.Exists(path_origin))
         {
-            PlayerStat.instance.saveData(0, 0, 0, 0, 0, 0, 10, 200, 200, 50, 50, 0, 0);
+            PlayerStat.instance.saveData(0, 0, 50000000, 0, 0, 0, 10, 200, 200, 50, 50, 0, 0);
         }
-        else { 
-            string loadJson = File.ReadAllText(path);
+        else
+        {
+            string loadJson = File.ReadAllText(path_origin);
             SavePlayerStat savePlayerStat = new SavePlayerStat();
             savePlayerStat = JsonUtility.FromJson<SavePlayerStat>(loadJson);
 
@@ -81,7 +80,7 @@ public class DataManager : MonoBehaviour
             {
                 PlayerStat.instance.saveData(savePlayerStat.exp, savePlayerStat.money, savePlayerStat.maxMoney,
                     savePlayerStat.endurance, savePlayerStat.strength, savePlayerStat.intelligence, savePlayerStat.atkDamege,
-                    savePlayerStat.health, savePlayerStat.maxHealth, savePlayerStat.working, savePlayerStat.maxWorking, 
+                    savePlayerStat.health, savePlayerStat.maxHealth, savePlayerStat.working, savePlayerStat.maxWorking,
                     savePlayerStat.times, savePlayerStat.dialogue);
             }
         }
@@ -95,8 +94,8 @@ public class DataManager : MonoBehaviour
             PlayerStat.instance.health, PlayerStat.instance.maxHealth, PlayerStat.instance.working, PlayerStat.instance.maxWorking,
             PlayerStat.instance.times, PlayerStat.instance.dialogue);
 
-        string json = JsonUtility.ToJson(savePlayerStat, true);
+        string json = JsonUtility.ToJson(savePlayerStat);
 
-        File.WriteAllText(path, json);
+        File.WriteAllText(path_origin, json);
     }
 }
