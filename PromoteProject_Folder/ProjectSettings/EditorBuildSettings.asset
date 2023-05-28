@@ -23,4 +23,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BankHard.unity
     guid: c27c9f79fbda40d4cb769baaeab7a051
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 84685bc898270b942a517f2b7a8782fc
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: 21d63114bf8648e4fb3b2b25c3983898
+  - enabled: 1
+    path: Assets/Scenes/TrueEnding.unity
+    guid: 88453296606dc3d4b8a4eee9a5e3751a
   m_configObjects: {}

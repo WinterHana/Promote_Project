@@ -1,27 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-public class MainMenuController : MonoBehaviour
+using TMPro;
+
+public class GameClearCanvasController1 : MonoBehaviour
 {
-    public ExplainTextController con;
-    public void startGame()
+    public void MainMeun()
     {
-        LoadingSceneController.LoadScene("Hometown");
-    }
-    public void Quit()
-    {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-            Application.Quit();
-#endif
-    }
-
-    public void init()
-    {
-        ExplainTextController instance = Instantiate(con);
-
         // 스탯 초기화
         PlayerStat.instance.exp = 0;
         PlayerStat.instance.money = 0;
@@ -37,6 +24,7 @@ public class MainMenuController : MonoBehaviour
         PlayerStat.instance.times = 0;
         PlayerStat.instance.dialogue = 0;
 
-        instance.guide = "초기화가 완료되었습니다.";
+        // 메인 메뉴로 돌아가기
+        LoadingSceneController.LoadScene("MainMenu");
     }
 }

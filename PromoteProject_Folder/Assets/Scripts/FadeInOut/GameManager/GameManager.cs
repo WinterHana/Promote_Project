@@ -53,7 +53,14 @@ public class GameManager : MonoBehaviour
     public Difficulty difficulty;
     public Step step;
 
+    [Header("게임 클리어의 여부 확인")]
+    public bool gameClear;      // 클리어 여부 확인
+    public int checkClearTime;  
+    delegate void Action();     // 팝업창 띄우기
+
+
     int sceneNum;               // 씬 번호
+
     public static GameManager instance; 
     private void Awake()
     {
@@ -66,11 +73,14 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        gameClear = false;
     }
 
     private void Start()
     {
         TodayCheck();
+        if (PlayerStat.instance.times >= checkClearTime) gameClearCheck();
     }
 
     private void Update()
@@ -173,6 +183,42 @@ public class GameManager : MonoBehaviour
             isReward = true;
         }
         return reward;
+    }
+
+    public void gameClearCheck()
+    {
+        Debug.Log("Checking...");
+        // 게임 클리어!
+        if (PlayerStat.instance.money >= PlayerStat.instance.maxMoney)
+        {
+            gameClear = true;
+            SelectPopUpManager.instance.OpenPopUp(1);
+            StartCoroutine(SelectCoroutine(ResultGameClear));
+        }
+        // 게임 오버...
+        else {
+            gameClear = false;
+            SelectPopUpManager.instance.OpenPopUp(0);
+            StartCoroutine(SelectCoroutine(ResultGameOver));
+        }
+        
+    }
+
+    void ResultGameOver()
+    {
+        LoadingSceneController.LoadScene("GameOver");
+    }
+
+    void ResultGameClear()
+    {
+        LoadingSceneController.LoadScene("Ending");
+    }
+
+    // 어느 선택이든 엔딩 직행
+    IEnumerator SelectCoroutine(Action action)
+    {
+        yield return new WaitUntil(() => !SelectPopUpManager.instance.isSelect);
+        action();
     }
 }
 

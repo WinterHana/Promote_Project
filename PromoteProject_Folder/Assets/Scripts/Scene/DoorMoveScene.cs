@@ -9,6 +9,7 @@ public class DoorMoveScene : MonoBehaviour
 
     Dictionary<int, string> dic;    // 팝업창에 쓸 내용 파싱해서 저장
     public int dialogueNum;         // 선택 창에 따른 대화내용 설정
+    int result;
 
     private void Start()
     {
@@ -30,7 +31,10 @@ public class DoorMoveScene : MonoBehaviour
         {
             if (collision.CompareTag("Player") && upArrow)
             {
-                SelectPopUpManager.instance.OpenPopUp(dialogueNum);
+                if (PlayerStat.instance.times % 2 == 0) result = 4001;
+                else result = dialogueNum;
+
+                SelectPopUpManager.instance.OpenPopUp(result);
                 StartCoroutine(SelectCoroutine());
             }
         }
@@ -44,7 +48,7 @@ public class DoorMoveScene : MonoBehaviour
     {
         yield return new WaitUntil(() => !SelectPopUpManager.instance.isSelect);
 
-        if (SelectPopUpManager.instance.sign)
+        if (SelectPopUpManager.instance.sign && result != 4001)
         {
             LoadingSceneController.LoadScene(nextScene);
         }

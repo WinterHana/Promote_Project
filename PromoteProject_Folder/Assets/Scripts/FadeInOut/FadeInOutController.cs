@@ -7,7 +7,7 @@ using TMPro;
 public class FadeInOutController : MonoBehaviour
 {
     [Header("기본 설정")]
-    public float FadeTime = 2f; // Fade효과 재생시간
+    public float FadeTime = 1f; // Fade효과 재생시간
     public Image fadeImg;
     public TextMeshProUGUI fadeText;
     float start;

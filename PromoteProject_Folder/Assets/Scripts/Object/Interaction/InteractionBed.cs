@@ -6,10 +6,12 @@ public class InteractionBed : InteractionObject
 {
     [SerializeField] int id;
     [SerializeField] FadeInOutController controller;            // FadeInOutCanvas 넣기
+    [SerializeField] PlayerHPController playerHP;
     delegate void Action();
 
     private void Start()
     {
+        playerHP = GameObject.FindGameObjectWithTag("HPCanvas").GetComponent<PlayerHPController>();
         Action action = changeTime;
     }
 
@@ -27,8 +29,15 @@ public class InteractionBed : InteractionObject
     {
         GameManager.instance.TodayChange();
         controller.ChangeDayAnim();
-        PlayerStat.instance.health += 50;       // 침대에서 전환하면 체력 일부 전환
+        // 침대에서 전환하면 체력 일부 회복
+        PlayerStat.instance.health += 50;       
         if (PlayerStat.instance.health > PlayerStat.instance.maxHealth) PlayerStat.instance.health = PlayerStat.instance.maxHealth;
+        playerHP.Hphealth.MyMaxValue = PlayerStat.instance.maxHealth;
+        playerHP.Hphealth.MyCurrentValue = PlayerStat.instance.health;
+
+        // 대화 수치 증가
+        PlayerStat.instance.dialogue++;
+
     }
 
     IEnumerator SelectCoroutine(Action action)

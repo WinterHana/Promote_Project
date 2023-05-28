@@ -1,27 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-public class MainMenuController : MonoBehaviour
+using TMPro;
+
+public class GameOverCanvasController : MonoBehaviour
 {
-    public ExplainTextController con;
-    public void startGame()
+    [Header("결과 텍스트 삽입")]
+    public TextMeshProUGUI result_1;
+    public TextMeshProUGUI result_2;
+
+    private void Start()
     {
-        LoadingSceneController.LoadScene("Hometown");
-    }
-    public void Quit()
-    {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-            Application.Quit();
-#endif
+        result_1.text = $"모은 돈 : { PlayerStat.instance.money }원";
+        result_2.text = $"목표한 돈 : { PlayerStat.instance.maxMoney }원";
     }
 
-    public void init()
+    public void MainMeun()
     {
-        ExplainTextController instance = Instantiate(con);
-
         // 스탯 초기화
         PlayerStat.instance.exp = 0;
         PlayerStat.instance.money = 0;
@@ -37,6 +34,7 @@ public class MainMenuController : MonoBehaviour
         PlayerStat.instance.times = 0;
         PlayerStat.instance.dialogue = 0;
 
-        instance.guide = "초기화가 완료되었습니다.";
+        // 메인 메뉴로 돌아가기
+        LoadingSceneController.LoadScene("MainMenu");
     }
 }

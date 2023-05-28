@@ -45,7 +45,11 @@ public class TimeManager : MonoBehaviour
     {
         TodayControl();
         TimeAttackStarter();
-        if (SceneManager.GetActiveScene().buildIndex == 0)
+        // 메인화면, 엔딩 예외처리
+        if (SceneManager.GetActiveScene().buildIndex == 0 
+            || SceneManager.GetActiveScene().buildIndex == 6 
+            || SceneManager.GetActiveScene().buildIndex == 7
+            || SceneManager.GetActiveScene().buildIndex == 8)
         {
             Destroy(gameObject);
         }

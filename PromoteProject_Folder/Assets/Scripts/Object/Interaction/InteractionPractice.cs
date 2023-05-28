@@ -45,7 +45,7 @@ public class InteractionPractice : InteractionObject
             // 인내심 증가
             PlayerStat.instance.endurance++;
             // 효과 : 최대 체력 증가.
-            PlayerStat.instance.maxHealth = 100 + PlayerStat.instance.endurance * 10;
+            PlayerStat.instance.maxHealth = 200 + PlayerStat.instance.endurance * 10;
             PlayerStat.instance.health += 10;
             // 효과 -> UI에 직접 반영하기
             playerHP.Hphealth.MyMaxValue = PlayerStat.instance.maxHealth;

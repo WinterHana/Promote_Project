@@ -13,6 +13,6 @@ public class InteractionTelephone : InteractionObject
 
     public override void Interaction() 
     {
-        diaManager.Action(dialogueInfo.objID, dialogueInfo.dialogueID);
+        diaManager.Action(dialogueInfo.objID, PlayerStat.instance.dialogue);
     }
 }

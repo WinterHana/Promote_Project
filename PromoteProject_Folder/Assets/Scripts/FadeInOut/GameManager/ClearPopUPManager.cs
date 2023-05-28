@@ -97,7 +97,10 @@ public class ClearPopUPManager : MonoBehaviour
             GameManager.instance.goToHomeTown();
             if (PlayerStat.instance.health <= 0) PlayerStat.instance.health = PlayerStat.instance.maxHealth / 2;     // 죽으면 체력의 반 정도 회복
             PlayerStat.instance.times++;
+            PlayerStat.instance.dialogue++;
             PlayerStat.instance.working = PlayerStat.instance.maxWorking;   // 행동치 회복 
+
+
         }
         
         Title.text = gameoverTitle;

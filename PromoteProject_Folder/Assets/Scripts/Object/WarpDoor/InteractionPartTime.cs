@@ -9,13 +9,26 @@ public class InteractionPartTime : InteractionObject
 
     private void Start()
     {
-        Action action = changeTime;
+        Action[] action = { changeTime, changeEnding };
     }
     public override void Interaction()
     {
-        SelectPopUpManager.instance.OpenPopUp(1004);
+        if (PlayerStat.instance.times % 2 == 0)
+        {
+            SelectPopUpManager.instance.OpenPopUp(4001);
+        }
+        else if (PlayerStat.instance.dialogue == 13)
+        {
+            // È÷µç ¿£µù
+            SelectPopUpManager.instance.OpenPopUp(2);
+            StartCoroutine(SelectCoroutine(changeEnding));
+        }
+        else
+        {
+            SelectPopUpManager.instance.OpenPopUp(1004);
+            StartCoroutine(SelectCoroutine(changeTime));
+        }
 
-        StartCoroutine(SelectCoroutine(changeTime));
     }
 
     IEnumerator SelectCoroutine(Action action)
@@ -31,7 +44,12 @@ public class InteractionPartTime : InteractionObject
     void changeTime()
     {
         GameManager.instance.TodayChange();
-        PlayerStat.instance.money += 5000000;       // µ· Áõ°¡
+        PlayerStat.instance.money += 3000000;       // µ· Áõ°¡
         controller.ChangeDayAnim();
+    }
+
+    void changeEnding()
+    {
+        LoadingSceneController.LoadScene("TrueEnding");
     }
 }

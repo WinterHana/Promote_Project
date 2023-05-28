@@ -48,6 +48,7 @@ public class DialogManager : MonoBehaviour
         isAction = false;
         talkIndex = 0;
         panelAni.SetBool("isShow", isAction);
+        
     }
 
     // 대화 상호작용을 관여함
@@ -57,18 +58,22 @@ public class DialogManager : MonoBehaviour
         string talkData = talkManager[objID].GetDialouge(dialogueID, talkIndex);
         Debug.Log(talkData);
         // 대화 끝
-        if (talkData == null) {
+        if (talkData == null)
+        {
             isAction = false;
             talkIndex = 0;
-            if (PlayerStat.instance.dialogue <= PlayerStat.instance.times) PlayerStat.instance.dialogue++;
+            PlayerStat.instance.dialogue++;
+            if (PlayerStat.instance.times <= PlayerStat.instance.dialogue) PlayerStat.instance.dialogue = PlayerStat.instance.times;
             return true;
         }
+        else 
+        {
+            // 대화 내용이 더 있다면 실행한다.
+            talkText.text = talkData;
+            isAction = true;
+            talkIndex++;
 
-        // 대화 내용이 더 있다면 실행한다.
-        talkText.text = talkData;
-        isAction = true;
-        talkIndex++;
-
-        return false;
+            return false;
+        }
     }
 }
