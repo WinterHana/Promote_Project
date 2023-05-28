@@ -50,6 +50,7 @@ public class InteractionPartTime : InteractionObject
         // 클리어 여부 확인
         GameManager.instance.isClear();
         if (GameManager.instance.gameClear) GameManager.instance.gameClearCheck();
+        else if((PlayerStat.instance.times >= GameManager.instance.checkClearTime)) GameManager.instance.gameClearCheck();
     }
 
     void changeEnding()

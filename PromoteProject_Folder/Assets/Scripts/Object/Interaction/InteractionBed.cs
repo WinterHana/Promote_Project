@@ -39,8 +39,7 @@ public class InteractionBed : InteractionObject
         PlayerStat.instance.dialogue++;
 
         // 클리어 여부 확인
-        GameManager.instance.isClear();
-        if (GameManager.instance.gameClear) GameManager.instance.gameClearCheck();
+        if (PlayerStat.instance.times >= GameManager.instance.checkClearTime) GameManager.instance.gameClearCheck();
     }
 
     IEnumerator SelectCoroutine(Action action)

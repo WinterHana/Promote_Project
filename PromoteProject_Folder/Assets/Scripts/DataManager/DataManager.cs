@@ -58,31 +58,27 @@ public class DataManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        path_origin = Path.Combine(Application.streamingAssetsPath, "database.json");
-        JsonLoad();
-        // path = Path.Combine(Application.dataPath, "resources/database.json");
     }
 
     public void JsonLoad() {
         // 기본적인 스탯 설정
-        if (!File.Exists(path_origin))
+/*        if (!File.Exists(path_origin))
         {
             PlayerStat.instance.saveData(0, 0, 50000000, 0, 0, 0, 10, 200, 200, 50, 50, 0, 0);
-        }
-        else
+            Debug.Log("JsonLoad IF문 예외처리");
+        }*/
+        if(true)
         {
             string loadJson = File.ReadAllText(path_origin);
             SavePlayerStat savePlayerStat = new SavePlayerStat();
             savePlayerStat = JsonUtility.FromJson<SavePlayerStat>(loadJson);
+            
+            PlayerStat.instance.saveData(savePlayerStat.exp, savePlayerStat.money, savePlayerStat.maxMoney,
+                savePlayerStat.endurance, savePlayerStat.strength, savePlayerStat.intelligence, savePlayerStat.atkDamege,
+                savePlayerStat.health, savePlayerStat.maxHealth, savePlayerStat.working, savePlayerStat.maxWorking,
+                savePlayerStat.times, savePlayerStat.dialogue);
 
-            if (savePlayerStat != null)
-            {
-                PlayerStat.instance.saveData(savePlayerStat.exp, savePlayerStat.money, savePlayerStat.maxMoney,
-                    savePlayerStat.endurance, savePlayerStat.strength, savePlayerStat.intelligence, savePlayerStat.atkDamege,
-                    savePlayerStat.health, savePlayerStat.maxHealth, savePlayerStat.working, savePlayerStat.maxWorking,
-                    savePlayerStat.times, savePlayerStat.dialogue);
-            }
+            Debug.Log("JsonLoad 작동");
         }
     }
 
@@ -94,8 +90,10 @@ public class DataManager : MonoBehaviour
             PlayerStat.instance.health, PlayerStat.instance.maxHealth, PlayerStat.instance.working, PlayerStat.instance.maxWorking,
             PlayerStat.instance.times, PlayerStat.instance.dialogue);
 
-        string json = JsonUtility.ToJson(savePlayerStat);
+        string json = JsonUtility.ToJson(savePlayerStat, true);
 
         File.WriteAllText(path_origin, json);
+
+        Debug.Log("JsonSave 작동");
     }
 }

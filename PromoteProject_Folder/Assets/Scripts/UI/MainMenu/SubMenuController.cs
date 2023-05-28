@@ -27,12 +27,13 @@ public class SubMenuController : MonoBehaviour
     }
 
     public void Quit()
-    {   
-        #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-        #else
+    {
+        // DataManager.instance.JsonSave();
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
             Application.Quit();
-        #endif
+#endif
     }
     
 }

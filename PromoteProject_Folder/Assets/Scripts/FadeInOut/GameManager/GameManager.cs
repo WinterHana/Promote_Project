@@ -166,7 +166,7 @@ public class GameManager : MonoBehaviour
         {
             isClear();
             if(gameClear) gameClearCheck();
-            else if(PlayerStat.instance.times == checkClearTime) gameClearCheck();
+            else if(PlayerStat.instance.times >= checkClearTime) gameClearCheck();
         }
     }
 

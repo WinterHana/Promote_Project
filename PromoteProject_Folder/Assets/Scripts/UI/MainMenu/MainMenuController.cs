@@ -11,6 +11,7 @@ public class MainMenuController : MonoBehaviour
     }
     public void Quit()
     {
+        // DataManager.instance.JsonSave();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
@@ -36,6 +37,8 @@ public class MainMenuController : MonoBehaviour
         PlayerStat.instance.maxWorking = 50;
         PlayerStat.instance.times = 0;
         PlayerStat.instance.dialogue = 0;
+
+        // DataManager.instance.JsonSave();
 
         instance.guide = "초기화가 완료되었습니다.";
     }
