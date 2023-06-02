@@ -72,6 +72,9 @@ public class ClearPopUPManager : MonoBehaviour
 
         Title.text = clearTitle;
 
+        int targetMoney = PlayerStat.instance.maxMoney - PlayerStat.instance.money;
+        if (targetMoney <= 0) targetMoney = 0;
+
         ClearTimeText.text =
             "남은 시간 : " + (int) reminingTime + "초";
         RewardText.text =
@@ -79,7 +82,7 @@ public class ClearPopUPManager : MonoBehaviour
             + $"단계 : {GameManager.instance.step}\n"
             + $"획득한 돈 : {reward}원";
         ResultText.text =
-            $"목표까지 {PlayerStat.instance.maxMoney - PlayerStat.instance.money}원 남았습니다.";
+            $"목표까지 {targetMoney}원\n남았습니다.";
 
     }
 
@@ -105,6 +108,9 @@ public class ClearPopUPManager : MonoBehaviour
         
         Title.text = gameoverTitle;
 
+        int targetMoney = PlayerStat.instance.maxMoney - PlayerStat.instance.money;
+        if (targetMoney <= 0) targetMoney = 0;
+
         ClearTimeText.text =
             "다음 기회에...";
         RewardText.text =
@@ -112,7 +118,7 @@ public class ClearPopUPManager : MonoBehaviour
             + $"단계 : {GameManager.instance.step}\n"
             + "획득한 돈 : 0원";
         ResultText.text =
-            $"목표까지 \n{PlayerStat.instance.maxMoney - PlayerStat.instance.money}원 남았습니다.";
+            $"목표까지 {targetMoney}원\n남았습니다.";
     }
 
     void closePopUp()

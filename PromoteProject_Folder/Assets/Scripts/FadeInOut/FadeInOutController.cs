@@ -119,7 +119,7 @@ public class FadeInOutController : MonoBehaviour
     {
         // Debug.Log("실행 중");
         isPlaying = true;
-        
+
         // FadeIn
         time = 0f;
         start = 0f;
@@ -157,5 +157,6 @@ public class FadeInOutController : MonoBehaviour
         }
 
         isPlaying = false;
+        PlayerMove.isMove = true;       // 못 움직였던 플레이어를 다시 움직이게 하기
     }
 }

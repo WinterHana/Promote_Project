@@ -229,7 +229,8 @@ public class GameManager : MonoBehaviour
         // ÆË¾÷ ¶ç¿ì±â
         if(gameClear) SelectPopUpManager.instance.OpenPopUp(1);
         else SelectPopUpManager.instance.OpenPopUp(0);
-        Debug.Log(SelectPopUpManager.instance.isSelect);
+
+        // Debug.Log(SelectPopUpManager.instance.isSelect);
 
         // ÆË¾÷ ¾ø¾îÁö¸é ÀÛµ¿
         yield return new WaitUntil(() => !SelectPopUpManager.instance.isSelect);

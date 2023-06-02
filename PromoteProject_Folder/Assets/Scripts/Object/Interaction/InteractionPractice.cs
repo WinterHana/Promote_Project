@@ -10,6 +10,7 @@ public class InteractionPractice : InteractionObject
 
     [Header("안내 문구")]
     public ExplainTextController guide;
+    private bool isSelecting;
 
     // [SerializeField] SelectPopUpManager selectPopUpManager;
     private void Start()
@@ -23,18 +24,21 @@ public class InteractionPractice : InteractionObject
 
     public void UpEndurance()
     {
+        PlayerMove.isMove = false;
         SelectPopUpManager.instance.OpenPopUp(1001);
         StartCoroutine(SelectCoroutine(EnduranceControl));
     }
 
     public void UpStrength()
     {
+        PlayerMove.isMove = false;
         SelectPopUpManager.instance.OpenPopUp(1002);
         StartCoroutine(SelectCoroutine(StrengthControl));
     }
 
     public void UpIntelligence()
     {
+        PlayerMove.isMove = false;
         SelectPopUpManager.instance.OpenPopUp(1003);
         StartCoroutine(SelectCoroutine(IntelligenceControl));
     }
@@ -115,13 +119,17 @@ public class InteractionPractice : InteractionObject
         {
             action();
         }
+        PlayerMove.isMove = true;
     }
 
 
     public override void Interaction()
     {
-        if (statNo == 1) UpEndurance();
-        if (statNo == 2) UpStrength();
-        if (statNo == 3) UpIntelligence();
+        if (PlayerMove.isMove == true) {
+            if (statNo == 1) UpEndurance();
+            if (statNo == 2) UpStrength();
+            if (statNo == 3) UpIntelligence();
+        }
+
     }
 }

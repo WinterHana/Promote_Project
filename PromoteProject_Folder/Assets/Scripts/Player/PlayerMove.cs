@@ -5,7 +5,8 @@ using UnityEngine;
 /*
  * rigidbody , playerMove 설정 
  * 1. 공기저항(Linear Drag) : 1
- * 2. 중력 비중(Gravity Scale) : 2
+ * 2. 무게(Mass) : 50
+ * 2. 중력 비중(Gravity Scale) : 1
  * 3. playerSize = 0.8
  * 4. MaxSpeed = 6
  * 5. JumpPower = 13
@@ -46,9 +47,11 @@ public class PlayerMove : MonoBehaviour
     CapsuleCollider2D standCol;
     BoxCollider2D boxCol;
     GameObject ground;
+    PlayerLadderFinder LadderFinder;
     SpriteRenderer spriteRenderer;
     PlayerHPController playerHP;
     AttackCoolTimeController atkCooltime;
+
     bool isJump;            // 점프 상태인지 확인
     bool isSit;             // 앉은 상태인지 확인
     bool isLadder;          // 사다리 상태인지 확인
@@ -69,6 +72,7 @@ public class PlayerMove : MonoBehaviour
         atkCooltime = GameObject.FindGameObjectWithTag("AttackCoolTime").GetComponent<AttackCoolTimeController>();
 
         ground = transform.GetChild(0).gameObject;
+        LadderFinder = transform.GetChild(1).gameObject.GetComponent<PlayerLadderFinder>();
         // 오브젝트가 구르는 현상 방지
         rigid.freezeRotation = true;
 
@@ -99,7 +103,7 @@ public class PlayerMove : MonoBehaviour
     }
     void Update()
     {
-        if (isMove) 
+        if (isMove)
         {
             jump();
             sit();
@@ -120,6 +124,16 @@ public class PlayerMove : MonoBehaviour
         {
             move();
             notJump();
+        }
+        else
+        {
+            // 안 움직일 때는 서있는 자세 유지
+            rigid.velocity = new Vector2(0, 0);
+            ani.SetBool("walking", false);
+            ani.SetBool("jumping", false);
+            ani.SetBool("sitting", false);
+            isJump = false;
+            isSit = false;
         }
         die();
     }
@@ -197,14 +211,16 @@ public class PlayerMove : MonoBehaviour
     // 사다리 타기
     void ladder()
     {
-
         // 사다리 타기 판정
         RaycastHit2D hitInfo = Physics2D.Raycast(ground.transform.position, Vector2.up, rcDistance, whatIsLadder);
         Debug.DrawRay(ground.transform.position, Vector2.up * rcDistance, new Color(0, 1, 0));
-        if (hitInfo.collider != null)
+
+        // 사다리의 조건 수정하기
+        // if (hitInfo.collider != null)
+        if(LadderFinder.findLadder)
         {
             findLadder = true;
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
             {
                 isLadder = true;
             }
@@ -299,8 +315,8 @@ public class PlayerMove : MonoBehaviour
             isMove = false;
             rigid.AddForce(attackedVelocity, ForceMode2D.Impulse);
 
-            Invoke("OffDamaged", 2f);
-            Invoke("canMove", 0.5f);
+            Invoke("OffDamaged", 1f);       // 무적 시간
+            Invoke("canMove", 0.5f);        // 경직 시간
         }
     }
 

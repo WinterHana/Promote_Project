@@ -13,7 +13,7 @@ public class PlayerInteraction : MonoBehaviour
     void Update()
     {
         // 상호작용이 일어나면 발생시키기
-        if (Input.GetButtonDown("Interaction")) 
+        if (Input.GetButtonDown("Interaction") && PlayerMove.isMove == true) 
         {
             Interaction();
         }   
