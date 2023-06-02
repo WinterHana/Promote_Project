@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using LitJson;
 using UnityEngine.SceneManagement;
 
 [System.Serializable]
@@ -17,9 +18,12 @@ public class SavePlayerStat {
     public float maxHealth;         // 최대 체력
     public float working;           // 피로도
     public float maxWorking;        // 최대 피로도
+    public int times;               // 시간
+    public int dialogue;            // 대화 순서
 
     public void saveData(int _exp, int _money, int _maxMoney, int _endurance, int _strength,
-    int _intelligence, int _atkDamege, float _health, float _maxHealth, float _working, float _maxWorking)
+    int _intelligence, int _atkDamege, float _health, float _maxHealth, 
+    float _working, float _maxWorking, int _times, int _dialogue)
     {
         exp = _exp;
         money = _money;
@@ -32,17 +36,16 @@ public class SavePlayerStat {
         maxHealth = _maxHealth;
         working = _working;
         maxWorking = _maxWorking;
+        times = _times;
+        dialogue = _dialogue;
     }
 }
 
 public class DataManager : MonoBehaviour
 {
     string path;
+    string path_origin;
     public static DataManager instance;
-
-    // 스탯에 따라 변동하는 수치는 따로 저장
-    float maxHealthSave;
-    int atkDamegeSave;
 
     public void Awake()
     {
@@ -55,29 +58,27 @@ public class DataManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        path = Path.Combine(Application.dataPath, "Resources/database.json");
-        JsonLoad();
     }
 
     public void JsonLoad() {
-        
         // 기본적인 스탯 설정
-        if (!File.Exists(path))
+/*        if (!File.Exists(path_origin))
         {
-            PlayerStat.instance.saveData(0, 0, 0, 0, 0, 0, 10, 100, 100, 50, 50);
-        }
-        else { 
-            string loadJson = File.ReadAllText(path);
+            PlayerStat.instance.saveData(0, 0, 50000000, 0, 0, 0, 10, 200, 200, 50, 50, 0, 0);
+            Debug.Log("JsonLoad IF문 예외처리");
+        }*/
+        if(true)
+        {
+            string loadJson = File.ReadAllText(path_origin);
             SavePlayerStat savePlayerStat = new SavePlayerStat();
             savePlayerStat = JsonUtility.FromJson<SavePlayerStat>(loadJson);
+            
+            PlayerStat.instance.saveData(savePlayerStat.exp, savePlayerStat.money, savePlayerStat.maxMoney,
+                savePlayerStat.endurance, savePlayerStat.strength, savePlayerStat.intelligence, savePlayerStat.atkDamege,
+                savePlayerStat.health, savePlayerStat.maxHealth, savePlayerStat.working, savePlayerStat.maxWorking,
+                savePlayerStat.times, savePlayerStat.dialogue);
 
-            if (savePlayerStat != null)
-            {
-                PlayerStat.instance.saveData(savePlayerStat.exp, savePlayerStat.money, savePlayerStat.maxMoney,
-                    savePlayerStat.endurance, savePlayerStat.strength, savePlayerStat.intelligence, savePlayerStat.atkDamege,
-                    savePlayerStat.health, savePlayerStat.maxHealth, savePlayerStat.working, savePlayerStat.maxWorking);
-            }
+            Debug.Log("JsonLoad 작동");
         }
     }
 
@@ -86,10 +87,13 @@ public class DataManager : MonoBehaviour
 
         savePlayerStat.saveData(PlayerStat.instance.exp, PlayerStat.instance.money, PlayerStat.instance.maxMoney,
             PlayerStat.instance.endurance, PlayerStat.instance.strength, PlayerStat.instance.intelligence, PlayerStat.instance.atkDamege,
-            PlayerStat.instance.health, PlayerStat.instance.maxHealth, PlayerStat.instance.working, PlayerStat.instance.maxWorking);
+            PlayerStat.instance.health, PlayerStat.instance.maxHealth, PlayerStat.instance.working, PlayerStat.instance.maxWorking,
+            PlayerStat.instance.times, PlayerStat.instance.dialogue);
 
         string json = JsonUtility.ToJson(savePlayerStat, true);
 
-        File.WriteAllText(path, json);
+        File.WriteAllText(path_origin, json);
+
+        Debug.Log("JsonSave 작동");
     }
 }

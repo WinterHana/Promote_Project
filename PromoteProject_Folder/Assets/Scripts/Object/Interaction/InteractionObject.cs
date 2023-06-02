@@ -7,6 +7,7 @@ using UnityEngine;
 public abstract class InteractionObject : MonoBehaviour
 {
     private PlayerInteraction player;
+    private PlayerMove playerMove;
     public DialogManager diaManager;
 
     public abstract void Interaction();     // 여기에 상호작용할 내용을 구현한다.

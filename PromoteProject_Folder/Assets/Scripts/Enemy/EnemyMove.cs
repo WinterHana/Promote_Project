@@ -85,8 +85,22 @@ public class EnemyMove : MonoBehaviour
     {
         // 추적 모드
         if (isPursuit) {
-            anim.SetBool("isRun", true);
-            dir = (target.position.x - transform.position.x < 0) ? -1 : 1;
+            // dir = (target.position.x - transform.position.x < 1) ? -1 : 1;
+            // 플레이어가 머리 위로 올라갈 때 조절
+            if (target.position.x - transform.position.x < -1)
+            {
+                dir = -1;
+                anim.SetBool("isRun", true);
+            }
+            else if (target.position.x - transform.position.x > 1)
+            {
+                dir = 1;
+                anim.SetBool("isRun", true);
+            }
+            else {
+                dir = 0;
+                anim.SetBool("isRun", false);
+            }  
             watching = (dir == -1) ? true : false;
             spriteRenderer.flipX = watching;
             rigid.velocity = new Vector2(dir * currentSpeed, rigid.velocity.y);
@@ -146,6 +160,7 @@ public class EnemyMove : MonoBehaviour
     {
         // 공격 관련 기능
         RaycastHit2D raycast = Physics2D.Raycast(transform.position, transform.right * dir, distance, isLayer);
+
         Debug.DrawRay(transform.position, transform.right * dir * distance, new Color(255, 255, 0));
 
         if (raycast.collider != null)

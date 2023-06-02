@@ -53,3 +53,5 @@ MonoBehaviour:
   isReward: 0
   difficulty: 0
   step: 0
+  gameClear: 0
+  checkClearTime: 14

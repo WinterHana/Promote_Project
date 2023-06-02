@@ -25,8 +25,8 @@ public class TalkManager : MonoBehaviour
     {
         DialogueParser parser = FindObjectOfType<DialogueParser>();
 
-        path = Path.Combine(Application.dataPath + "/Resources/" + fileName + ".json");
-
+        // path = Path.Combine(Application.dataPath + "/Resources/" + fileName + ".json");
+        path = "telephoneDialogue";
         dialogues = parser.Parse(path);
     }
 

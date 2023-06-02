@@ -11,9 +11,13 @@ public class SelectPopUpManager : MonoBehaviour
     public TextMeshProUGUI text;
     public Button accept;
     public Button cancel;
-
+    [Header("선택 관련 변수")]
     public bool sign;           // 예 아니오 선택 관련 변수
-    public bool isSelect;       
+    public bool isSelect;
+    [Header("선택창 효과음 관련 변수")]
+    public AudioSource openAudio;
+    public AudioSource yesAudio;
+    public AudioSource noAudio;
 
     Dictionary<int, string> dic;    // 팝업창에 쓸 내용 파싱해서 저장
 
@@ -34,6 +38,7 @@ public class SelectPopUpManager : MonoBehaviour
             if (_instance == null)
             {
                 _instance = (SelectPopUpManager)FindObjectOfType(typeof(SelectPopUpManager));
+                
                 if (_instance == null)
                 {
                     Debug.Log("No instnace of SelectPopUpManager");
@@ -44,6 +49,7 @@ public class SelectPopUpManager : MonoBehaviour
     }
     void Awake()
     {
+        
         if (_instance != null && _instance != this)
         {
             DestroyImmediate(gameObject);
@@ -51,7 +57,8 @@ public class SelectPopUpManager : MonoBehaviour
         else
         {
             _instance = this;
-            //DontDestroyOnLoad(gameObject);
+            dic = SelectPopParser.parser();
+            // DontDestroyOnLoad(gameObject);
         }
     }
     #endregion
@@ -59,12 +66,18 @@ public class SelectPopUpManager : MonoBehaviour
     private void Start()
     {
         isSelect = false;
-        dic = SelectPopParser.parser();
     }
 
     private void Update()
     {
-        if (isSelect) panel.SetActive(true);
+        if (isSelect) {
+            panel.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                ClosePopUp();     // esc키 누르면 종료
+            }
+
+        } 
         else panel.SetActive(false);
     }
 
@@ -73,15 +86,18 @@ public class SelectPopUpManager : MonoBehaviour
         sign = false;
         isSelect = true;
         text.text = dic[num];
+        openAudio.Play();
 
         SetYesCallBack(() =>
         {
             sign = true;
+            yesAudio.Play();
             ClosePopUp();
         });
 
         SetNoCallBack(() =>
         {
+            noAudio.Play();
             ClosePopUp();
         });
     }

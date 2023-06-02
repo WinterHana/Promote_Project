@@ -48,8 +48,8 @@ public class StatContent : MonoBehaviour
         endurnaceText.text = $"인내심 : {endurance}";
         strengthText.text = $"근 력 : {strength}";
         intelligenceText.text = $"지 능 : {intelligence}";
-        moneyText.text = $"현재 지닌 돈 : {money}";
-        maxMoneyText.text = $"목표한 돈 : {maxMoney}\n" +
-            $"앞으로 {remind}원 남았습니다. ";
+        moneyText.text = $"현재 : {money}원";
+        maxMoneyText.text = $"목표 : {maxMoney}원\n\n" +
+            $"앞으로 {remind}원 \n남았습니다. ";
     }
 }

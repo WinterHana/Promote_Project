@@ -1,0 +1,15 @@
+{
+    "exp": 0,
+    "money": 0,
+    "maxMoney": 50000000,
+    "endurance": 0,
+    "strength": 0,
+    "intelligence": 5,
+    "atkDamege": 10,
+    "health": 200.0,
+    "maxHealth": 200.0,
+    "working": 0.0,
+    "maxWorking": 50.0,
+    "times": 1,
+    "dialogue": 1
+}

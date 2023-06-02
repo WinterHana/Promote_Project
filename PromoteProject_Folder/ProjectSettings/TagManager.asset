@@ -13,6 +13,7 @@ TagManager:
   - Enemy
   - Tile
   - Door
+  - AttackCoolTime
   layers:
   - Default
   - TransparentFX

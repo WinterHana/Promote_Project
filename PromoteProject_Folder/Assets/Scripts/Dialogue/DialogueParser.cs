@@ -13,8 +13,9 @@ public class DialogueParser : MonoBehaviour
     // 파일 이름을 입력받아 데이터를 파싱한다.
     public Dialogue[] Parse(string _FileName)
     {
-        string getJSON = File.ReadAllText(_FileName);
-        JsonData jsonData = JsonMapper.ToObject(getJSON);
+        // string getJSON = File.ReadAllText(_FileName);
+        var jsonTextFile = Resources.Load<TextAsset>(_FileName);
+        JsonData jsonData = JsonMapper.ToObject(jsonTextFile.ToString());
 
         result = new Dialogue[jsonData.Count];                           // 결과 리스트
         lines = new List<string>();                                      // 임시 대화 내용 리스트
