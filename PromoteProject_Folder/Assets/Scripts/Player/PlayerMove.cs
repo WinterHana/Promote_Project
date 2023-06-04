@@ -24,6 +24,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] float sitSpeed;
     [SerializeField] float climbSpeed;
     [SerializeField] float rcDistance;
+    [SerializeField] float knockbackForce;
     [SerializeField] LayerMask whatIsLadder;
     [Space]
     [Header("플레이어 움직임 여부")]
@@ -296,7 +297,7 @@ public class PlayerMove : MonoBehaviour
     // 피격 당했을 때
     public void OnDamaged(float damage, Transform tr)
     {
-        Vector2 attackedVelocity = Vector2.zero;
+        Vector2 attackedVelocity;
 
         if (!isDamage) {
             AttackedSound.Play();
@@ -304,16 +305,18 @@ public class PlayerMove : MonoBehaviour
             PlayerStat.instance.health -= damage;
             isDamage = true;
 
-            if (tr.position.x > transform.position.x)
+            if (tr.position.x > transform.position.x) {
                 attackedVelocity = new Vector2(-5f, 5f);
-            else
+            }
+            else {
                 attackedVelocity = new Vector2(5f, 5f);
+            }
 
             spriteRenderer.color = new Color(1, 1, 1, 0.4f);
             ani.SetTrigger("attacked");
 
             isMove = false;
-            rigid.AddForce(attackedVelocity, ForceMode2D.Impulse);
+            rigid.AddForce(attackedVelocity * knockbackForce, ForceMode2D.Impulse);
 
             Invoke("OffDamaged", 1f);       // 무적 시간
             Invoke("canMove", 0.5f);        // 경직 시간
