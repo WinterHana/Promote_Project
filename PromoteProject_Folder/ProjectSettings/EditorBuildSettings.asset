@@ -19,10 +19,19 @@ EditorBuildSettings:
     guid: f7a00270f9877284dbbc54fb8bab3daa
   - enabled: 1
     path: Assets/Scenes/BankMiddle.unity
-    guid: af3d90b8bfc319c4aa4ed263ee370579
+    guid: 40353f2961f03804ea1a5fc217986f6f
   - enabled: 1
     path: Assets/Scenes/BankHard.unity
     guid: c27c9f79fbda40d4cb769baaeab7a051
+  - enabled: 1
+    path: Assets/Scenes/BankEasy_Step2.unity
+    guid: fd95ec6d4cb1baa48a388858f51e8e0d
+  - enabled: 1
+    path: Assets/Scenes/BankMiddle_Step2.unity
+    guid: af3d90b8bfc319c4aa4ed263ee370579
+  - enabled: 1
+    path: Assets/Scenes/BankHard_Step2.unity
+    guid: 1c22d1c916e441543a9c0bb9f5b91825
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 84685bc898270b942a517f2b7a8782fc

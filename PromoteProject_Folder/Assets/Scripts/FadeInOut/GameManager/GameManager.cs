@@ -10,12 +10,12 @@ public enum BankScene
     Easy_Step1 = 3,
     Medium_Step1 = 4,
     Hard_Step1 = 5,
-    Easy_Step2 = 2,
-    Easy_Step3 = 3,
-    Medium_Step2 = 5,
-    Medium_Step3 = 6,
+    Easy_Step2 = 6,
+    Medium_Step2 = 7,
     Hard_Step2 = 8,
-    Hard_Step3 = 9
+    Easy_Step3 = 9,
+    Medium_Step3 = 10,
+    Hard_Step3 = 11
 }
 
 public enum Difficulty
@@ -157,6 +157,27 @@ public class GameManager : MonoBehaviour
             TimeManager.instance.isStartTimeAttack();
             TimeManager.instance.setReminingTime(setTimeHard);
         }
+        else if (sceneNum == (int)BankScene.Easy_Step2)
+        {
+            difficulty = Difficulty.Easy;
+            step = Step.step2;
+            TimeManager.instance.isStartTimeAttack();
+            TimeManager.instance.setReminingTime(setTimeEasy);
+        }
+        else if (sceneNum == (int)BankScene.Medium_Step2)
+        {
+            difficulty = Difficulty.Medium;
+            step = Step.step2;
+            TimeManager.instance.isStartTimeAttack();
+            TimeManager.instance.setReminingTime(setTimeMedium);
+        }
+        else if (sceneNum == (int)BankScene.Hard_Step2)
+        {
+            difficulty = Difficulty.Hard;
+            step = Step.step2;
+            TimeManager.instance.isStartTimeAttack();
+            TimeManager.instance.setReminingTime(setTimeHard);
+        }
         else {
             TimeManager.instance.isEndTimeAttack();
         }
@@ -183,9 +204,9 @@ public class GameManager : MonoBehaviour
     public int moneyRewird()
     {
         int reward = (int)difficulty * 
-            (500000 * PlayerStat.instance.intelligence 
+            (300000 * PlayerStat.instance.intelligence 
             + 100000 * (int) TimeManager.instance.setTime 
-            + 3000000 * (int)step);
+            + 5000000 * (int)step);
         if (!isReward)
         {
             PlayerStat.instance.money += reward;

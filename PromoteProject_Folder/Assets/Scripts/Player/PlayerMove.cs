@@ -24,7 +24,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] float sitSpeed;
     [SerializeField] float climbSpeed;
     [SerializeField] float rcDistance;
-    [SerializeField] float knockbackForce;
+    [SerializeField] int knockbackForce;
     [SerializeField] LayerMask whatIsLadder;
     [Space]
     [Header("플레이어 움직임 여부")]
@@ -129,7 +129,8 @@ public class PlayerMove : MonoBehaviour
         else
         {
             // 안 움직일 때는 서있는 자세 유지
-            rigid.velocity = new Vector2(0, 0);
+            // 대미지를 입은 것이 아니라면, 플레이어의 velocity도 0으로 고정한다.
+            if (!isDamage) StopPlayer();
             ani.SetBool("walking", false);
             ani.SetBool("jumping", false);
             ani.SetBool("sitting", false);
@@ -297,29 +298,33 @@ public class PlayerMove : MonoBehaviour
     // 피격 당했을 때
     public void OnDamaged(float damage, Transform tr)
     {
-        Vector2 attackedVelocity;
+        Vector3 attackedVelocity = Vector3.zero;
 
         if (!isDamage) {
             AttackedSound.Play();
             playerHP.Hphealth.MyCurrentValue -= damage;
             PlayerStat.instance.health -= damage;
             isDamage = true;
+            isMove = false;
 
-            if (tr.position.x > transform.position.x) {
-                attackedVelocity = new Vector2(-5f, 5f);
+            if (tr.position.x > transform.position.x)
+            {
+                attackedVelocity = new Vector3(-1, 1, 0);
             }
-            else {
-                attackedVelocity = new Vector2(5f, 5f);
+            else
+            {
+                attackedVelocity = new Vector3(1, 1, 0);
             }
 
             spriteRenderer.color = new Color(1, 1, 1, 0.4f);
             ani.SetTrigger("attacked");
+ 
+            rigid.AddForce(attackedVelocity * knockbackForce, ForceMode2D.Impulse);     // 넉백 부여
 
-            isMove = false;
-            rigid.AddForce(attackedVelocity * knockbackForce, ForceMode2D.Impulse);
+            Debug.Log(attackedVelocity * knockbackForce);
 
-            Invoke("OffDamaged", 1f);       // 무적 시간
-            Invoke("canMove", 0.5f);        // 경직 시간
+            Invoke(nameof(OffDamaged), 1f);       // 무적 시간
+            Invoke(nameof(canMove), 0.5f);        // 경직 시간
         }
     }
 
@@ -342,5 +347,10 @@ public class PlayerMove : MonoBehaviour
             ani.SetBool("die", true);
             isMove = false;
         }
+    }
+
+    // 선택창에서 플레이어를 멈출 때 호출하는 함수
+    public void StopPlayer() {
+        rigid.velocity = new Vector3(0, 0, 0);
     }
 }

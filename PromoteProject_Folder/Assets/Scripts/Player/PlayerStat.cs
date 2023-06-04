@@ -28,7 +28,7 @@ public class PlayerStat : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            saveData(0, 0, 50000000, 0, 0, 0, 10, 200, 200, 50, 50, 0, 0);
+            saveData(0, 0, 100000000, 0, 0, 0, 10, 200, 200, 50, 50, 0, 0);
             DontDestroyOnLoad(this);
         }
         else { 
