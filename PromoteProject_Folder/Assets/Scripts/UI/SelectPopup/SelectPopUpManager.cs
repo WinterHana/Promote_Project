@@ -76,7 +76,10 @@ public class SelectPopUpManager : MonoBehaviour
             {
                 ClosePopUp();     // esc키 누르면 종료
             }
-
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                OnYes();
+            }
         } 
         else panel.SetActive(false);
     }

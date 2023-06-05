@@ -130,6 +130,5 @@ public class InteractionPractice : InteractionObject
             if (statNo == 2) UpStrength();
             if (statNo == 3) UpIntelligence();
         }
-
     }
 }

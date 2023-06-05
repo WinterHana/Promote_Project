@@ -26,7 +26,7 @@ public class MainMenuController : MonoBehaviour
         // Ω∫≈» √ ±‚»≠
         PlayerStat.instance.exp = 0;
         PlayerStat.instance.money = 0;
-        PlayerStat.instance.maxMoney = 50000000;
+        PlayerStat.instance.maxMoney = 100000000;
         PlayerStat.instance.endurance = 0;
         PlayerStat.instance.strength = 0;
         PlayerStat.instance.intelligence = 0;

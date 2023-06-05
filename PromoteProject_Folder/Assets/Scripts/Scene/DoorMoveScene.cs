@@ -31,9 +31,12 @@ public class DoorMoveScene : MonoBehaviour
         {
             if (collision.CompareTag("Player") && upArrow)
             {
+                // ≥∑π„ ∆«¥‹
                 if (PlayerStat.instance.times % 2 == 0) result = 4001;
                 else result = dialogueNum;
 
+                // ¥Î»≠√¢ ø≠±‚
+                PlayerMove.isMove = false;
                 SelectPopUpManager.instance.OpenPopUp(result);
                 StartCoroutine(SelectCoroutine());
             }
@@ -52,5 +55,6 @@ public class DoorMoveScene : MonoBehaviour
         {
             LoadingSceneController.LoadScene(nextScene);
         }
+        PlayerMove.isMove = true;
     }
 }

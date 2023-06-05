@@ -4,8 +4,7 @@ using UnityEngine;
 
 // 기본적인 움직임 생성
 // 컴포넌트가 없으면 자동으로 추가
-[RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(CircleCollider2D))]
+// [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
 public class EnemyMove : MonoBehaviour
 {
@@ -37,13 +36,14 @@ public class EnemyMove : MonoBehaviour
     float currentTime;
     bool watching;
     float dir;
+
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
-        
+
         isMove = true;
         isPursuit = false;
         isAttack = true;

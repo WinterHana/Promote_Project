@@ -9,7 +9,7 @@ public class JumpTileController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player")) {
-            Debug.Log("작동하다");
+            // Debug.Log("작동하다");
 
             Rigidbody2D rid = collision.GetComponent<Rigidbody2D>();
 
